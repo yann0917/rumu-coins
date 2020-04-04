@@ -4,6 +4,7 @@ use Dcat\Admin\Admin;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid\Filter;
+use Dcat\Admin\Layout\Navbar;
 use Dcat\Admin\Show;
 
 /**
@@ -24,3 +25,14 @@ use Dcat\Admin\Show;
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
+
+ // 监听表格初始化事件
+ Grid::resolving(function (Grid $grid){
+    $grid->disableBatchDelete(); // 禁用批量删除
+    $grid->disableRowSelector(); // 禁用行选择器
+ });
+
+ // 自定义头部导航条 TODO: 下拉选择商户
+ Admin::navbar(function (Navbar $navbar){
+   $navbar->left(view('search-bar'));
+ });

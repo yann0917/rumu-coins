@@ -34,9 +34,15 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection config
      * @property Grid\Column|Collection require
      * @property Grid\Column|Collection require_dev
+     * @property Grid\Column|Collection url
      * @property Grid\Column|Collection sort
      * @property Grid\Column|Collection status
-     * @property Grid\Column|Collection url
+     * @property Grid\Column|Collection email
+     * @property Grid\Column|Collection email_verified_at
+     * @property Grid\Column|Collection password
+     * @property Grid\Column|Collection remember_token
+     * @property Grid\Column|Collection qrcode
+     * @property Grid\Column|Collection wechat_account
      * @property Grid\Column|Collection icon
      * @property Grid\Column|Collection order
      * @property Grid\Column|Collection parent_id
@@ -46,16 +52,12 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection permission_id
      * @property Grid\Column|Collection http_method
      * @property Grid\Column|Collection role_id
-     * @property Grid\Column|Collection password
-     * @property Grid\Column|Collection remember_token
      * @property Grid\Column|Collection deleted_at
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection exception
      * @property Grid\Column|Collection failed_at
      * @property Grid\Column|Collection payload
      * @property Grid\Column|Collection queue
-     * @property Grid\Column|Collection email
-     * @property Grid\Column|Collection email_verified_at
      *
      * @method Grid\Column|Collection id(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
@@ -80,9 +82,15 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection config(string $label = null)
      * @method Grid\Column|Collection require(string $label = null)
      * @method Grid\Column|Collection require_dev(string $label = null)
+     * @method Grid\Column|Collection url(string $label = null)
      * @method Grid\Column|Collection sort(string $label = null)
      * @method Grid\Column|Collection status(string $label = null)
-     * @method Grid\Column|Collection url(string $label = null)
+     * @method Grid\Column|Collection email(string $label = null)
+     * @method Grid\Column|Collection email_verified_at(string $label = null)
+     * @method Grid\Column|Collection password(string $label = null)
+     * @method Grid\Column|Collection remember_token(string $label = null)
+     * @method Grid\Column|Collection qrcode(string $label = null)
+     * @method Grid\Column|Collection wechat_account(string $label = null)
      * @method Grid\Column|Collection icon(string $label = null)
      * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection parent_id(string $label = null)
@@ -92,16 +100,12 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection permission_id(string $label = null)
      * @method Grid\Column|Collection http_method(string $label = null)
      * @method Grid\Column|Collection role_id(string $label = null)
-     * @method Grid\Column|Collection password(string $label = null)
-     * @method Grid\Column|Collection remember_token(string $label = null)
      * @method Grid\Column|Collection deleted_at(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection exception(string $label = null)
      * @method Grid\Column|Collection failed_at(string $label = null)
      * @method Grid\Column|Collection payload(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
-     * @method Grid\Column|Collection email(string $label = null)
-     * @method Grid\Column|Collection email_verified_at(string $label = null)
      */
     class Grid {}
 
@@ -131,9 +135,15 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection config
      * @property Show\Field|Collection require
      * @property Show\Field|Collection require_dev
+     * @property Show\Field|Collection url
      * @property Show\Field|Collection sort
      * @property Show\Field|Collection status
-     * @property Show\Field|Collection url
+     * @property Show\Field|Collection email
+     * @property Show\Field|Collection email_verified_at
+     * @property Show\Field|Collection password
+     * @property Show\Field|Collection remember_token
+     * @property Show\Field|Collection qrcode
+     * @property Show\Field|Collection wechat_account
      * @property Show\Field|Collection icon
      * @property Show\Field|Collection order
      * @property Show\Field|Collection parent_id
@@ -143,16 +153,12 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection permission_id
      * @property Show\Field|Collection http_method
      * @property Show\Field|Collection role_id
-     * @property Show\Field|Collection password
-     * @property Show\Field|Collection remember_token
      * @property Show\Field|Collection deleted_at
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection exception
      * @property Show\Field|Collection failed_at
      * @property Show\Field|Collection payload
      * @property Show\Field|Collection queue
-     * @property Show\Field|Collection email
-     * @property Show\Field|Collection email_verified_at
      *
      * @method Show\Field|Collection id(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
@@ -177,9 +183,15 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection config(string $label = null)
      * @method Show\Field|Collection require(string $label = null)
      * @method Show\Field|Collection require_dev(string $label = null)
+     * @method Show\Field|Collection url(string $label = null)
      * @method Show\Field|Collection sort(string $label = null)
      * @method Show\Field|Collection status(string $label = null)
-     * @method Show\Field|Collection url(string $label = null)
+     * @method Show\Field|Collection email(string $label = null)
+     * @method Show\Field|Collection email_verified_at(string $label = null)
+     * @method Show\Field|Collection password(string $label = null)
+     * @method Show\Field|Collection remember_token(string $label = null)
+     * @method Show\Field|Collection qrcode(string $label = null)
+     * @method Show\Field|Collection wechat_account(string $label = null)
      * @method Show\Field|Collection icon(string $label = null)
      * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection parent_id(string $label = null)
@@ -189,16 +201,12 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection permission_id(string $label = null)
      * @method Show\Field|Collection http_method(string $label = null)
      * @method Show\Field|Collection role_id(string $label = null)
-     * @method Show\Field|Collection password(string $label = null)
-     * @method Show\Field|Collection remember_token(string $label = null)
      * @method Show\Field|Collection deleted_at(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection exception(string $label = null)
      * @method Show\Field|Collection failed_at(string $label = null)
      * @method Show\Field|Collection payload(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
-     * @method Show\Field|Collection email(string $label = null)
-     * @method Show\Field|Collection email_verified_at(string $label = null)
      */
     class Show {}
 

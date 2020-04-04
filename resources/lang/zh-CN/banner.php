@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 return [
     'labels' => [
         'Banner' => '广告位',

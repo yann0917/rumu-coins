@@ -2,13 +2,13 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Repositories\Banner;
+use App\Admin\Repositories\Wechat;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Controllers\AdminController;
 
-class BannerController extends AdminController
+class WechatController extends AdminController
 {
     /**
      * Make a grid builder.
@@ -17,13 +17,12 @@ class BannerController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new Banner(), function (Grid $grid) {
+        return Grid::make(new Wechat(), function (Grid $grid) {
             $grid->id->sortable();
-            $grid->url()->image();
-            $grid->sort->sortable();
-            $grid->status()->switch();
-            $grid->created_at;
-            $grid->updated_at->sortable();
+            $grid->wechat_account;
+            $grid->qrcode()->image();
+            // $grid->created_at;
+            // $grid->updated_at->sortable();
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
             });
@@ -39,11 +38,10 @@ class BannerController extends AdminController
      */
     protected function detail($id)
     {
-        return Show::make($id, new Banner(), function (Show $show) {
+        return Show::make($id, new Wechat(), function (Show $show) {
             $show->id;
-            $show->url()->image();
-            $show->sort;
-            $show->status()->using(['0' => '关闭', '1' => '开启']);
+            $show->wechat_account;
+            $show->qrcode()->image();
             $show->created_at;
             $show->updated_at;
         });
@@ -56,11 +54,10 @@ class BannerController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new Banner(), function (Form $form) {
+        return Form::make(new Wechat(), function (Form $form) {
             $form->display('id');
-            $form->image('url')->uniqueName();
-            $form->text('sort');
-            $form->switch('status', '上架?');
+            $form->text('wechat_account');
+            $form->image('qrcode')->uniqueName();
             $form->display('created_at');
             $form->display('updated_at');
         });

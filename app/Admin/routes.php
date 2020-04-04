@@ -15,4 +15,5 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->resource('banners', BannerController::class);
     $router->resource('users', UserController::class);
+    $router->resource('wechat', WechatController::class);
 });

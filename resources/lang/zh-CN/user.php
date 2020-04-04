@@ -1,7 +1,8 @@
-<?php 
+<?php
+
 return [
     'labels' => [
-        'User' => 'User',
+        'User' => '用户',
     ],
     'fields' => [
         'email' => '邮箱',
@@ -10,6 +11,14 @@ return [
         'password' => '密码',
         'remember_token' => 'remember_token',
         'avatar' => '头像',
+        'nickname' => '昵称',
+        'unionid' => 'unionid',
+        'miniapp_id' => 'miniapp_id',
+        'status' => '状态',
+        'sex' => '性别',
+        'country' => '国家',
+        'province' => '省份',
+        'city' => '城市',
     ],
     'options' => [
     ],
