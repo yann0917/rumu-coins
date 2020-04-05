@@ -88,10 +88,10 @@ class GroupConfigController extends AdminController
             $show->disableQuickEdit();
             $show->disableEditButton();
             $show->disableDeleteButton();
-            $show->id;
-            $show->issue;
-            $show->start_at;
-            $show->end_at;
+            $show->id->width(3);
+            $show->issue->width(3);
+            $show->start_at->width(3);
+            $show->end_at->width(3);
             // $show->created_at;
             // $show->updated_at;
 

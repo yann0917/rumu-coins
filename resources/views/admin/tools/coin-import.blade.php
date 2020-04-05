@@ -2,16 +2,17 @@
     .file {
         position: relative;
         display: inline-grid;
-        background: #D0EEFF;
-        border: 1px solid #99D3F5;
+        background: #5c6bc6;
+        border: none;
         border-radius: 4px;
-        padding: 8px 18px;
+        padding: 4px 10px;
         overflow: hidden;
-        color: #1E88C7;
+        color: #FFFFFF;
         text-decoration: none;
         text-indent: 0;
-        line-height: 20px;
+        line-height: 18px;
     }
+
     .file input {
         position: absolute;
         font-size: 100px;
@@ -19,27 +20,28 @@
         top: 0;
         opacity: 0;
     }
+
     .file:hover {
-        background: #AADFFD;
-        border-color: #78C3F3;
-        color: #004974;
+        border: none;
+        color: #FFFFFF;
         text-decoration: none;
+        -webkit-box-shadow: #ccc 0px 2px 4px;
+        -moz-box-shadow: #ccc 0px 2px 4px;
+        box-shadow: #ccc 0px 2px 4px;
     }
 </style>
 <div class="btn-group">
     <form id="coins-import" class="form-horizontal" role="form" method="POST" action="" enctype="multipart/form-data">
         {{ csrf_field() }}
-        {{--        <label for="file" class="col-md-4 control-label">Hello world</label>--}}
-
         <div class="row">
             <div class="col-md-6">
-                <a href="javascript:;" class="file">选择文件
+                <a href="javascript:void(0);" class="file">选择文件
                     <input type="file" name="file" id="coins-file">
                 </a>
             </div>
             <div class="col-md-6">
                 <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-btn fa-sign-in"></i> 导入数据
+                    <i class="fa fa-btn fa-sign-in"></i> 导入
                 </button>
             </div>
         </div>
