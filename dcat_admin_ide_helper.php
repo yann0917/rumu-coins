@@ -41,8 +41,14 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection email_verified_at
      * @property Grid\Column|Collection password
      * @property Grid\Column|Collection remember_token
-     * @property Grid\Column|Collection qrcode
+     * @property Grid\Column|Collection nickname
+     * @property Grid\Column|Collection unionid
+     * @property Grid\Column|Collection miniap_id
      * @property Grid\Column|Collection wechat_account
+     * @property Grid\Column|Collection qrcode
+     * @property Grid\Column|Collection end_at
+     * @property Grid\Column|Collection issue
+     * @property Grid\Column|Collection start_at
      * @property Grid\Column|Collection icon
      * @property Grid\Column|Collection order
      * @property Grid\Column|Collection parent_id
@@ -58,6 +64,12 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection failed_at
      * @property Grid\Column|Collection payload
      * @property Grid\Column|Collection queue
+     * @property Grid\Column|Collection city
+     * @property Grid\Column|Collection country
+     * @property Grid\Column|Collection miniapp_id
+     * @property Grid\Column|Collection official_id
+     * @property Grid\Column|Collection province
+     * @property Grid\Column|Collection sex
      *
      * @method Grid\Column|Collection id(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
@@ -89,8 +101,14 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection email_verified_at(string $label = null)
      * @method Grid\Column|Collection password(string $label = null)
      * @method Grid\Column|Collection remember_token(string $label = null)
-     * @method Grid\Column|Collection qrcode(string $label = null)
+     * @method Grid\Column|Collection nickname(string $label = null)
+     * @method Grid\Column|Collection unionid(string $label = null)
+     * @method Grid\Column|Collection miniap_id(string $label = null)
      * @method Grid\Column|Collection wechat_account(string $label = null)
+     * @method Grid\Column|Collection qrcode(string $label = null)
+     * @method Grid\Column|Collection end_at(string $label = null)
+     * @method Grid\Column|Collection issue(string $label = null)
+     * @method Grid\Column|Collection start_at(string $label = null)
      * @method Grid\Column|Collection icon(string $label = null)
      * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection parent_id(string $label = null)
@@ -106,6 +124,12 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection failed_at(string $label = null)
      * @method Grid\Column|Collection payload(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
+     * @method Grid\Column|Collection city(string $label = null)
+     * @method Grid\Column|Collection country(string $label = null)
+     * @method Grid\Column|Collection miniapp_id(string $label = null)
+     * @method Grid\Column|Collection official_id(string $label = null)
+     * @method Grid\Column|Collection province(string $label = null)
+     * @method Grid\Column|Collection sex(string $label = null)
      */
     class Grid {}
 
@@ -142,8 +166,14 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection email_verified_at
      * @property Show\Field|Collection password
      * @property Show\Field|Collection remember_token
-     * @property Show\Field|Collection qrcode
+     * @property Show\Field|Collection nickname
+     * @property Show\Field|Collection unionid
+     * @property Show\Field|Collection miniap_id
      * @property Show\Field|Collection wechat_account
+     * @property Show\Field|Collection qrcode
+     * @property Show\Field|Collection end_at
+     * @property Show\Field|Collection issue
+     * @property Show\Field|Collection start_at
      * @property Show\Field|Collection icon
      * @property Show\Field|Collection order
      * @property Show\Field|Collection parent_id
@@ -159,6 +189,12 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection failed_at
      * @property Show\Field|Collection payload
      * @property Show\Field|Collection queue
+     * @property Show\Field|Collection city
+     * @property Show\Field|Collection country
+     * @property Show\Field|Collection miniapp_id
+     * @property Show\Field|Collection official_id
+     * @property Show\Field|Collection province
+     * @property Show\Field|Collection sex
      *
      * @method Show\Field|Collection id(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
@@ -190,8 +226,14 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection email_verified_at(string $label = null)
      * @method Show\Field|Collection password(string $label = null)
      * @method Show\Field|Collection remember_token(string $label = null)
-     * @method Show\Field|Collection qrcode(string $label = null)
+     * @method Show\Field|Collection nickname(string $label = null)
+     * @method Show\Field|Collection unionid(string $label = null)
+     * @method Show\Field|Collection miniap_id(string $label = null)
      * @method Show\Field|Collection wechat_account(string $label = null)
+     * @method Show\Field|Collection qrcode(string $label = null)
+     * @method Show\Field|Collection end_at(string $label = null)
+     * @method Show\Field|Collection issue(string $label = null)
+     * @method Show\Field|Collection start_at(string $label = null)
      * @method Show\Field|Collection icon(string $label = null)
      * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection parent_id(string $label = null)
@@ -207,6 +249,12 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection failed_at(string $label = null)
      * @method Show\Field|Collection payload(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
+     * @method Show\Field|Collection city(string $label = null)
+     * @method Show\Field|Collection country(string $label = null)
+     * @method Show\Field|Collection miniapp_id(string $label = null)
+     * @method Show\Field|Collection official_id(string $label = null)
+     * @method Show\Field|Collection province(string $label = null)
+     * @method Show\Field|Collection sex(string $label = null)
      */
     class Show {}
 

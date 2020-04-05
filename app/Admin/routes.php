@@ -16,4 +16,11 @@ Route::group([
     $router->resource('banners', BannerController::class);
     $router->resource('users', UserController::class);
     $router->resource('wechat', WechatController::class);
+
+    Route::group(['prefix' => 'group'], function() use ($router){
+        $router->resource('configs', GroupConfigController::class);
+    });
+
+
+
 });
