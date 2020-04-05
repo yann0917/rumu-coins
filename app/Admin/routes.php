@@ -19,8 +19,8 @@ Route::group([
 
     Route::group(['prefix' => 'group'], function() use ($router){
         $router->resource('configs', GroupConfigController::class);
+        $router->resource('coins', GroupCoinController::class);
+        $router->post('coins/import/{group_id}', 'GroupCoinController@coinsImport');
     });
-
-
 
 });

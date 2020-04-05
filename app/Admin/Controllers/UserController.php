@@ -37,7 +37,7 @@ class UserController extends AdminController
             // $grid->status->switch();
             $grid->created_at;
             $grid->updated_at->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter){
                 $filter->equal('id');
                 $filter->like('nickname');

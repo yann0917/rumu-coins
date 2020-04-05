@@ -2,7 +2,9 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\Tools\CoinImport;
 use App\Admin\Repositories\GroupConfig;
+use App\Models\GroupCoin;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
@@ -18,6 +20,7 @@ class GroupConfigController extends AdminController
     protected function grid()
     {
         return Grid::make(new GroupConfig(), function (Grid $grid) {
+            $grid->model()->with('coins');
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 if ( time() >= strtotime($this->start_at) && time() < strtotime($this->end_at)) {
                     // 进行中
@@ -38,9 +41,9 @@ class GroupConfigController extends AdminController
             $grid->start_at;
             $grid->end_at;
 
-            // TODO: 展示商品数量
+            // 展示商品数量
             $grid->column('goods_nums')->display(function () {
-                return 100;
+                return count($this->coins);
             });
 
             $grid->column('status')->display(function () {
@@ -61,12 +64,13 @@ class GroupConfigController extends AdminController
             ]);
             // $grid->created_at;
             // $grid->updated_at->sortable();
-
+            // 展示商品数量
+            $grid->column('团购明细')->display(function () {
+                return admin_url('group') . '?group_id=' . $this->issue;
+            });
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->panel();
                 $filter->equal('id');
                 $filter->equal('issue');
-
             });
         });
     }
@@ -88,10 +92,53 @@ class GroupConfigController extends AdminController
             $show->issue;
             $show->start_at;
             $show->end_at;
-            $show->created_at;
-            $show->updated_at;
+            // $show->created_at;
+            // $show->updated_at;
 
             $show->divider();
+            // 一对多关联
+            $show->coins(function ($model) {
+                return Grid::make(new GroupCoin(), function (Grid $grid) use($model) {
+                    if ( time() >= strtotime($model->start_at) && time() < strtotime($model->end_at)) {
+                        $status = 1;
+                    } elseif (time() >= strtotime($model->end_at) && time() >= strtotime($model->start_at)) {
+                        $status = 2;
+                    } else {
+                        $status = 0;
+                    }
+                    if ($status == 0) {
+                        // 未开始可以导入数据
+                        $grid->tools(function (Grid\Tools $tools) {
+                            $tools->append(new CoinImport());
+                        });
+                    }
+                    // 禁用创建按钮
+                    $grid->disableCreateButton();
+                    $grid->disableActions(); // 禁用操作
+
+                    $grid->model()->where('group_id', $model->id);
+                    $grid->resource('/group/coins');
+
+                    $grid->id->sortable();
+                    // $grid->group_id;
+                    $grid->sn('号码')->sortable();
+                    $grid->category('分类');
+                    $grid->score('分数')->sortable();
+                    $grid->sn_no('证书号');
+                    $grid->low_price('起步价')->display(function ($low_price) {
+                        return $low_price * 0.01;
+                    })->help('人民币元');
+                    $grid->top_price('封顶价')->display(function ($top_price) {
+                        return $top_price * 0.01;
+                    })->help('人民币元');
+
+                    $grid->created_at;
+                    // $grid->updated_at->sortable();
+                    // $grid->filter(function (Grid\Filter $filter) {
+                    //     $filter->equal('id');
+                    // });
+                });
+            });
         });
     }
 
@@ -116,8 +163,8 @@ class GroupConfigController extends AdminController
                     'after' => ':attribute必须大于开始时间',
                 ]);
 
-            $form->display('created_at');
-            $form->display('updated_at');
+            // $form->display('created_at');
+            // $form->display('updated_at');
         });
     }
 }
