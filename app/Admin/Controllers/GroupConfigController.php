@@ -66,7 +66,7 @@ class GroupConfigController extends AdminController
             // $grid->updated_at->sortable();
             // 展示商品数量
             $grid->column('团购明细')->display(function () {
-                return admin_url('group') . '?group_id=' . $this->issue;
+                return "<a href=".admin_url('group') . '?group_id=' . $this->issue .">查看明细" ."</a>";
             });
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');

@@ -28,3 +28,5 @@ Route::group([
 });
 
 Route::resource('group', GroupBuyingController::class);
+Route::get('wechat', 'WechatController@show');
+Route::get('banners', 'BannerController@index');

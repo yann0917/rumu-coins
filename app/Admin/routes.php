@@ -18,6 +18,9 @@ Route::group([
     $router->resource('wechat', WechatController::class);
 
     Route::group(['prefix' => 'group'], function() use ($router){
+        $router->get('export/{group_id}', 'GroupController@userExport');
+
+        $router->resource('', GroupController::class);
         $router->resource('configs', GroupConfigController::class);
         $router->resource('coins', GroupCoinController::class);
         $router->post('coins/import/{group_id}', 'GroupCoinController@coinsImport');

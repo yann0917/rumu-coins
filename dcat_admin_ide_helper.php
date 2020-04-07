@@ -56,27 +56,30 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection sn_no
      * @property Grid\Column|Collection low_price
      * @property Grid\Column|Collection top_price
-     * @property Grid\Column|Collection parent_id
-     * @property Grid\Column|Collection order
-     * @property Grid\Column|Collection icon
-     * @property Grid\Column|Collection uri
+     * @property Grid\Column|Collection coins
+     * @property Grid\Column|Collection goods_id
+     * @property Grid\Column|Collection price
      * @property Grid\Column|Collection user_id
-     * @property Grid\Column|Collection permission_id
+     * @property Grid\Column|Collection icon
+     * @property Grid\Column|Collection order
+     * @property Grid\Column|Collection parent_id
+     * @property Grid\Column|Collection uri
      * @property Grid\Column|Collection menu_id
+     * @property Grid\Column|Collection permission_id
      * @property Grid\Column|Collection http_method
      * @property Grid\Column|Collection role_id
      * @property Grid\Column|Collection deleted_at
      * @property Grid\Column|Collection connection
-     * @property Grid\Column|Collection queue
-     * @property Grid\Column|Collection payload
      * @property Grid\Column|Collection exception
      * @property Grid\Column|Collection failed_at
+     * @property Grid\Column|Collection payload
+     * @property Grid\Column|Collection queue
+     * @property Grid\Column|Collection city
+     * @property Grid\Column|Collection country
      * @property Grid\Column|Collection miniapp_id
      * @property Grid\Column|Collection official_id
-     * @property Grid\Column|Collection sex
-     * @property Grid\Column|Collection country
      * @property Grid\Column|Collection province
-     * @property Grid\Column|Collection city
+     * @property Grid\Column|Collection sex
      *
      * @method Grid\Column|Collection id(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
@@ -123,27 +126,30 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection sn_no(string $label = null)
      * @method Grid\Column|Collection low_price(string $label = null)
      * @method Grid\Column|Collection top_price(string $label = null)
-     * @method Grid\Column|Collection parent_id(string $label = null)
-     * @method Grid\Column|Collection order(string $label = null)
-     * @method Grid\Column|Collection icon(string $label = null)
-     * @method Grid\Column|Collection uri(string $label = null)
+     * @method Grid\Column|Collection coins(string $label = null)
+     * @method Grid\Column|Collection goods_id(string $label = null)
+     * @method Grid\Column|Collection price(string $label = null)
      * @method Grid\Column|Collection user_id(string $label = null)
-     * @method Grid\Column|Collection permission_id(string $label = null)
+     * @method Grid\Column|Collection icon(string $label = null)
+     * @method Grid\Column|Collection order(string $label = null)
+     * @method Grid\Column|Collection parent_id(string $label = null)
+     * @method Grid\Column|Collection uri(string $label = null)
      * @method Grid\Column|Collection menu_id(string $label = null)
+     * @method Grid\Column|Collection permission_id(string $label = null)
      * @method Grid\Column|Collection http_method(string $label = null)
      * @method Grid\Column|Collection role_id(string $label = null)
      * @method Grid\Column|Collection deleted_at(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
-     * @method Grid\Column|Collection queue(string $label = null)
-     * @method Grid\Column|Collection payload(string $label = null)
      * @method Grid\Column|Collection exception(string $label = null)
      * @method Grid\Column|Collection failed_at(string $label = null)
+     * @method Grid\Column|Collection payload(string $label = null)
+     * @method Grid\Column|Collection queue(string $label = null)
+     * @method Grid\Column|Collection city(string $label = null)
+     * @method Grid\Column|Collection country(string $label = null)
      * @method Grid\Column|Collection miniapp_id(string $label = null)
      * @method Grid\Column|Collection official_id(string $label = null)
-     * @method Grid\Column|Collection sex(string $label = null)
-     * @method Grid\Column|Collection country(string $label = null)
      * @method Grid\Column|Collection province(string $label = null)
-     * @method Grid\Column|Collection city(string $label = null)
+     * @method Grid\Column|Collection sex(string $label = null)
      */
     class Grid {}
 
@@ -195,27 +201,30 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection sn_no
      * @property Show\Field|Collection low_price
      * @property Show\Field|Collection top_price
-     * @property Show\Field|Collection parent_id
-     * @property Show\Field|Collection order
-     * @property Show\Field|Collection icon
-     * @property Show\Field|Collection uri
+     * @property Show\Field|Collection coins
+     * @property Show\Field|Collection goods_id
+     * @property Show\Field|Collection price
      * @property Show\Field|Collection user_id
-     * @property Show\Field|Collection permission_id
+     * @property Show\Field|Collection icon
+     * @property Show\Field|Collection order
+     * @property Show\Field|Collection parent_id
+     * @property Show\Field|Collection uri
      * @property Show\Field|Collection menu_id
+     * @property Show\Field|Collection permission_id
      * @property Show\Field|Collection http_method
      * @property Show\Field|Collection role_id
      * @property Show\Field|Collection deleted_at
      * @property Show\Field|Collection connection
-     * @property Show\Field|Collection queue
-     * @property Show\Field|Collection payload
      * @property Show\Field|Collection exception
      * @property Show\Field|Collection failed_at
+     * @property Show\Field|Collection payload
+     * @property Show\Field|Collection queue
+     * @property Show\Field|Collection city
+     * @property Show\Field|Collection country
      * @property Show\Field|Collection miniapp_id
      * @property Show\Field|Collection official_id
-     * @property Show\Field|Collection sex
-     * @property Show\Field|Collection country
      * @property Show\Field|Collection province
-     * @property Show\Field|Collection city
+     * @property Show\Field|Collection sex
      *
      * @method Show\Field|Collection id(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
@@ -262,27 +271,30 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection sn_no(string $label = null)
      * @method Show\Field|Collection low_price(string $label = null)
      * @method Show\Field|Collection top_price(string $label = null)
-     * @method Show\Field|Collection parent_id(string $label = null)
-     * @method Show\Field|Collection order(string $label = null)
-     * @method Show\Field|Collection icon(string $label = null)
-     * @method Show\Field|Collection uri(string $label = null)
+     * @method Show\Field|Collection coins(string $label = null)
+     * @method Show\Field|Collection goods_id(string $label = null)
+     * @method Show\Field|Collection price(string $label = null)
      * @method Show\Field|Collection user_id(string $label = null)
-     * @method Show\Field|Collection permission_id(string $label = null)
+     * @method Show\Field|Collection icon(string $label = null)
+     * @method Show\Field|Collection order(string $label = null)
+     * @method Show\Field|Collection parent_id(string $label = null)
+     * @method Show\Field|Collection uri(string $label = null)
      * @method Show\Field|Collection menu_id(string $label = null)
+     * @method Show\Field|Collection permission_id(string $label = null)
      * @method Show\Field|Collection http_method(string $label = null)
      * @method Show\Field|Collection role_id(string $label = null)
      * @method Show\Field|Collection deleted_at(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
-     * @method Show\Field|Collection queue(string $label = null)
-     * @method Show\Field|Collection payload(string $label = null)
      * @method Show\Field|Collection exception(string $label = null)
      * @method Show\Field|Collection failed_at(string $label = null)
+     * @method Show\Field|Collection payload(string $label = null)
+     * @method Show\Field|Collection queue(string $label = null)
+     * @method Show\Field|Collection city(string $label = null)
+     * @method Show\Field|Collection country(string $label = null)
      * @method Show\Field|Collection miniapp_id(string $label = null)
      * @method Show\Field|Collection official_id(string $label = null)
-     * @method Show\Field|Collection sex(string $label = null)
-     * @method Show\Field|Collection country(string $label = null)
      * @method Show\Field|Collection province(string $label = null)
-     * @method Show\Field|Collection city(string $label = null)
+     * @method Show\Field|Collection sex(string $label = null)
      */
     class Show {}
 

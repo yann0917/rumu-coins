@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-6">
                 <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-btn fa-sign-in"></i> 导入
+                    <i class="fa fa-btn fa-sign-in"></i>导 入
                 </button>
             </div>
         </div>

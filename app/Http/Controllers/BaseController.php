@@ -19,6 +19,7 @@ class BaseController extends Controller
         $this->getHeaders();
         $this->middleware('jwt.auth', ['except' => ['login']]);
     }
+
     private function getHeaders()
     {
         $request = $this->request;
