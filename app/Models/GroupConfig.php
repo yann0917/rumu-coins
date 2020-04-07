@@ -2,21 +2,16 @@
 
 namespace App\Models;
 
-use Dcat\Admin\Traits\HasDateTimeFormatter;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class GroupConfig extends Model
+class GroupConfig extends BaseModel
 {
-    use SoftDeletes;
-    use HasDateTimeFormatter;
-
     protected $table = 'group_configs';
 
     /**
      * 一对多
      *
-     * @return void
+     * @return HasMany
      */
     public function coins()
     {
