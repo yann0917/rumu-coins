@@ -10,6 +10,7 @@ use Dcat\Admin\Show;
 use Dcat\Admin\Controllers\AdminController;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\GroupExport;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class GroupController extends AdminController
 {
@@ -112,8 +113,15 @@ class GroupController extends AdminController
         });
     }
 
+    /**
+     * 导出参团用户
+     *
+     * @param int $group_id
+     * @return BinaryFileResponse
+     */
     public function userExport(int $group_id)
     {
-        return Excel::download(new GroupExport($group_id), $group_id .'期团购_'.time().'.xlsx');
+        $fileName = $group_id .'期团购_'.date('Y-m-d H:i:s').'.xlsx';
+        return Excel::download(new GroupExport($group_id), $fileName);
     }
 }

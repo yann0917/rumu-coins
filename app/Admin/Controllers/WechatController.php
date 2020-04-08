@@ -18,6 +18,8 @@ class WechatController extends AdminController
     protected function grid()
     {
         return Grid::make(new Wechat(), function (Grid $grid) {
+            $grid->disableViewButton();
+            $grid->disableDeleteButton();
             $grid->id->sortable();
             $grid->wechat_account;
             $grid->qrcode()->image();

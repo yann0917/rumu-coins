@@ -88,8 +88,26 @@ class GroupConfigController extends AdminController
             $show->disableQuickEdit();
             $show->disableEditButton();
             $show->disableDeleteButton();
-            $show->id->width(3);
-            $show->issue->width(3);
+
+            // $show->id->width(3);
+            $show->issue->as(function ($issue) {
+                return $issue . '期';
+            })->width(3);
+
+            $show->column('状态')->as(function() {
+                if ( time() >= strtotime($this->start_at) && time() < strtotime($this->end_at)) {
+                    $status = 1;
+                } elseif (time() >= strtotime($this->end_at) && time() >= strtotime($this->start_at)) {
+                    $status = 2;
+                } else {
+                    $status = 0;
+                }
+                return $status;
+            })->using([
+                0 => '未开始',
+                1 => '进行中',
+                2 => '已结束',
+            ])->label()->width(3);
             $show->start_at->width(3);
             $show->end_at->width(3);
             // $show->created_at;
