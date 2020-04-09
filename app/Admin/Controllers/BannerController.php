@@ -22,8 +22,8 @@ class BannerController extends AdminController
             $grid->url()->image();
             $grid->sort->sortable();
             $grid->status()->switch();
-            $grid->created_at;
-            $grid->updated_at->sortable();
+            // $grid->created_at;
+            // $grid->updated_at->sortable();
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
             });
@@ -44,8 +44,8 @@ class BannerController extends AdminController
             $show->url()->image();
             $show->sort;
             $show->status()->using(['0' => '关闭', '1' => '开启']);
-            $show->created_at;
-            $show->updated_at;
+            // $show->created_at;
+            // $show->updated_at;
         });
     }
 
@@ -61,8 +61,8 @@ class BannerController extends AdminController
             $form->image('url')->uniqueName();
             $form->text('sort');
             $form->switch('status', '上架?');
-            $form->display('created_at');
-            $form->display('updated_at');
+            // $form->display('created_at');
+            // $form->display('updated_at');
         });
     }
 }

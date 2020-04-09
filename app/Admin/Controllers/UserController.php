@@ -35,8 +35,8 @@ class UserController extends AdminController
             $grid->avatar->image();
             $grid->status->using([ 0 => '已拉黑', 1 => '正常用户']);
             // $grid->status->switch();
-            $grid->created_at;
-            $grid->updated_at->sortable();
+            // $grid->created_at;
+            // $grid->updated_at->sortable();
 
             $grid->filter(function (Grid\Filter $filter){
                 $filter->equal('id');
@@ -66,8 +66,8 @@ class UserController extends AdminController
             $show->unionid;
             $show->miniap_id;
             $show->status;
-            $show->created_at;
-            $show->updated_at;
+            // $show->created_at;
+            // $show->updated_at;
         });
     }
 
@@ -97,8 +97,8 @@ class UserController extends AdminController
             // $form->image('avatar');
             $form->display('nickname');
             $form->switch('status', '正常用户?');
-            $form->display('created_at');
-            $form->display('updated_at');
+            // $form->display('created_at');
+            // $form->display('updated_at');
         });
     }
 }

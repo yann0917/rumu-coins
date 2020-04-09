@@ -34,6 +34,9 @@ class Errors
     const ERR_UPLOAD_FILE_ERROR = 2500;
 
     const  ERR_USER_NO_EXIST = 10001;
+    const ERR_GROUP_BID_FAILED= 10002;
+    const ERR_GROUP_NUM_NOT_ENOUGH = 1003;
+    const ERR_USER_BLOCK = 10004;
 
     public static $ERR_MSG_BASE = [
         self::ERR_NO_ERROR => '',
@@ -61,6 +64,9 @@ class Errors
 
     public static $ERR_MSG = [
         self::ERR_USER_NO_EXIST => '用户不存在',
+        self::ERR_GROUP_BID_FAILED => '竞价失败，已被他人竞价”',
+        self::ERR_GROUP_NUM_NOT_ENOUGH => '多选5个以上的商品可重新封顶',
+        self::ERR_USER_BLOCK => '你无法出价，请联系客服',
     ];
 
     public static $DEFAULT_RETURN = [

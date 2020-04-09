@@ -19,5 +19,5 @@ class BaseModel extends Model
     use HasDateTimeFormatter;
 
     protected $guarded = ['id'];
-    protected $hidden = ['deleted_at', 'extra'];
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at', 'extra'];
 }

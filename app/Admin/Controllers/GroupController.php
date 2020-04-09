@@ -90,8 +90,8 @@ class GroupController extends AdminController
             $show->goods_id;
             $show->price;
             $show->user_id;
-            $show->created_at;
-            $show->updated_at;
+            // $show->created_at;
+            // $show->updated_at;
         });
     }
 

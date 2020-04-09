@@ -44,8 +44,8 @@ class WechatController extends AdminController
             $show->id;
             $show->wechat_account;
             $show->qrcode()->image();
-            $show->created_at;
-            $show->updated_at;
+            // $show->created_at;
+            // $show->updated_at;
         });
     }
 
@@ -60,8 +60,8 @@ class WechatController extends AdminController
             $form->display('id');
             $form->text('wechat_account');
             $form->image('qrcode')->uniqueName();
-            $form->display('created_at');
-            $form->display('updated_at');
+            // $form->display('created_at');
+            // $form->display('updated_at');
         });
     }
 }

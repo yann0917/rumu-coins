@@ -28,8 +28,11 @@ Route::group([
 });
 
 Route::group(['prefix' => 'group'], function ($route) {
-    $route->get('my', 'GroupController@index');
-    $route->resource('/history', GroupBuyingController::class)->only(['index', 'show']);
+    $route->get('', 'GroupController@index');
+    $route->post('', 'GroupController@store');
+    $route->get('current/price/{goods_id}', 'GroupController@currentPrice'); // 当前价
+    $route->get('my', 'GroupController@userGroup'); // 我的竞价列表
+    $route->resource('history', GroupBuyingController::class)->only(['index', 'show']);
 });
 Route::get('wechat', 'WechatController@show');
 Route::get('banners', 'BannerController@index');
