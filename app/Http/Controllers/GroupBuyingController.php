@@ -7,6 +7,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * @group 往期团购
+ *
+ * APIs for managing 往期团购
+ */
 class GroupBuyingController extends BaseController
 {
     /** @var GroupConfig */
@@ -19,7 +24,6 @@ class GroupBuyingController extends BaseController
     }
 
     /**
-     * Display a listing of the resource.
      * 往期团购列表
      *
      * @return JsonResponse
@@ -68,7 +72,8 @@ class GroupBuyingController extends BaseController
      */
     public function show($id)
     {
-        $detail = $this->groupConfig->where('id', $id)->with('coins')->first();
+        $detail = $this->groupConfig->where('id', $id)->with(['goods'])->first();
+        // TODO: 是否竞猜
         return $this->success($detail);
     }
 

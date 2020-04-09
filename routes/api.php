@@ -22,11 +22,14 @@ Route::group([
     'prefix' => 'auth'
 ], function ($router) {
     Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
+    // Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 });
 
-Route::resource('group', GroupBuyingController::class);
+Route::group(['prefix' => 'group'], function ($route) {
+    $route->get('my', 'GroupController@index');
+    $route->resource('/history', GroupBuyingController::class)->only(['index', 'show']);
+});
 Route::get('wechat', 'WechatController@show');
 Route::get('banners', 'BannerController@index');

@@ -20,7 +20,7 @@ class GroupConfigController extends AdminController
     protected function grid()
     {
         return Grid::make(new GroupConfig(), function (Grid $grid) {
-            $grid->model()->with('coins');
+            $grid->model()->with('goods');
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 if ( time() >= strtotime($this->start_at) && time() < strtotime($this->end_at)) {
                     // 进行中
@@ -43,7 +43,7 @@ class GroupConfigController extends AdminController
 
             // 展示商品数量
             $grid->column('goods_nums')->display(function () {
-                return count($this->coins);
+                return count($this->goods);
             });
 
             $grid->column('status')->display(function () {

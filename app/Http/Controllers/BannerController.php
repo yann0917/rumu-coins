@@ -6,6 +6,11 @@ use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Http\Resources\Banner as BannerResource;
 
+/**
+ * @group Banner 管理
+ *
+ * APIs for managing banners
+ */
 class BannerController extends BaseController
 {
     public $banner;
@@ -15,6 +20,12 @@ class BannerController extends BaseController
         $this->banner = $banner;
     }
 
+    /**
+     * banner 列表
+     *
+     * @responseFile responses/banners.get.json
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $list = $this->banner

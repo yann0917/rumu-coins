@@ -39,7 +39,7 @@ class GroupController extends AdminController
             $grid->tools(function (Grid\Tools $tools) {
                 $tools->append(new GroupExportTools());
             });
-            $grid->model()->with(['user', 'goods'])->where('config_id', '=', $group_id);
+            $grid->model()->with(['user', 'goods'])->where('group_id', '=', $group_id);
             $grid->id->sortable();
             $grid->column('sn', '号码')->display(function () {
                 return $this->goods['sn'];
@@ -121,7 +121,7 @@ class GroupController extends AdminController
      */
     public function userExport(int $group_id)
     {
-        $fileName = $group_id .'期团购_'.date('Y-m-d H:i:s').'.xlsx';
+        $fileName = $group_id .'期团购_'.date('Y-m-d-H-i-s').'.xlsx';
         return Excel::download(new GroupExport($group_id), $fileName);
     }
 }

@@ -17,7 +17,6 @@ class GroupExport extends AbstractTool
     protected function script()
     {
         $url = Request::all('group_id');
-        // ['group_id'=>1]
         $url = admin_base_path('group/export') .'/' . $url['group_id'];
         return <<<JS
 $("#group-export").attr("action", "$url")

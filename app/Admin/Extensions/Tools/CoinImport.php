@@ -17,7 +17,7 @@ class CoinImport extends AbstractTool
     protected function script()
     {
         $url = Request::segments();
-        $url = admin_base_path('group/coins/import') .'/'. last($url);
+        $url = admin_base_path('group/goods/import') .'/'. last($url);
 
         return <<<JS
 $("#coins-import").attr("action", "$url")

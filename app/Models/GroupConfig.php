@@ -13,8 +13,13 @@ class GroupConfig extends BaseModel
      *
      * @return HasMany
      */
-    public function coins()
+    public function goods()
     {
         return $this->hasMany(GroupCoin::class, 'group_id', 'id');
+    }
+
+    public function groups()
+    {
+        return $this->hasMany(Group::class, 'group_id', 'id');
     }
 }

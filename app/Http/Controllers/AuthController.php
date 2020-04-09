@@ -8,6 +8,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
+/**
+ * @group 登录授权
+ * APIs for managing 登录授权
+ */
 class AuthController extends BaseController
 {
     public $miniapp;
@@ -20,7 +24,11 @@ class AuthController extends BaseController
     }
 
     /**
+     * 小程序登录
      *
+     * @bodyParam code string required wx.login() 获取
+     * @bodyParam iv string required 加密算法的初始向量 IV.
+     * @bodyParam encryptedData string required 包括敏感数据在内的完整用户信息的加密数据.
      *
      * @return \Illuminate\Http\JsonResponse
      * @throws ApiException

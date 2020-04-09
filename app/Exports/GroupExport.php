@@ -17,7 +17,7 @@ class GroupExport implements FromQuery,WithHeadings,WithMapping
 
     public function query()
     {
-        return Group::query()->with(['user', 'goods'])->where('config_id', $this->group_id);
+        return Group::query()->with(['user', 'goods'])->where('group_id', $this->group_id);
     }
 
     /**

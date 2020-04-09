@@ -1,0 +1,278 @@
+{
+    "variables": [],
+    "info": {
+        "name": "Laravel API",
+        "_postman_id": "bd047dfe-aa33-4bd0-a337-fc9853bcbe4b",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Banner \u7ba1\u7406",
+            "description": "\nAPIs for managing banners",
+            "item": [
+                {
+                    "name": "banner \u5217\u8868",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/banners",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "\u56e2\u8d2d",
+            "description": "APIs for managing \u56e2\u8d2d",
+            "item": [
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/group\/my",
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "enim",
+                                    "description": "\u9875\u7801 \u9ed8\u8ba4 1",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "quam",
+                                    "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "\u5f80\u671f\u56e2\u8d2d",
+            "description": "\nAPIs for managing \u5f80\u671f\u56e2\u8d2d",
+            "item": [
+                {
+                    "name": "\u5f80\u671f\u56e2\u8d2d\u5217\u8868",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/group\/history",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/group\/history\/:history",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "\u5fae\u4fe1 management",
+            "description": "APIs for managing \u5fae\u4fe1\u914d\u7f6e",
+            "item": [
+                {
+                    "name": "\u5c55\u793a\u5fae\u4fe1\u53f7\u548c\u4e8c\u7ef4\u7801",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/wechat",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "\u767b\u5f55\u6388\u6743",
+            "description": "APIs for managing \u767b\u5f55\u6388\u6743",
+            "item": [
+                {
+                    "name": "\u5c0f\u7a0b\u5e8f\u767b\u5f55",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/auth\/login",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"code\": \"inventore\",\n    \"iv\": \"esse\",\n    \"encryptedData\": \"quia\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Refresh a token.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/auth\/refresh",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "\u5237\u65b0token\uff0c\u5982\u679c\u5f00\u542f\u9ed1\u540d\u5355\uff0c\u4ee5\u524d\u7684token\u4fbf\u4f1a\u5931\u6548\u3002\n\u503c\u5f97\u6ce8\u610f\u7684\u662f\u7528\u4e0a\u9762\u7684getToken\u518d\u83b7\u53d6\u4e00\u6b21Token\u5e76\u4e0d\u7b97\u505a\u5237\u65b0\uff0c\u4e24\u6b21\u83b7\u5f97\u7684Token\u662f\u5e76\u884c\u7684\uff0c\u5373\u4e24\u4e2a\u90fd\u53ef\u7528\u3002",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Get the authenticated User.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/auth\/me",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -22,8 +22,8 @@ Route::group([
 
         $router->resource('', GroupController::class);
         $router->resource('configs', GroupConfigController::class);
-        $router->resource('coins', GroupCoinController::class);
-        $router->post('coins/import/{group_id}', 'GroupCoinController@coinsImport');
+        $router->resource('goods', GroupCoinController::class);
+        $router->post('goods/import/{group_id}', 'GroupCoinController@coinsImport');
     });
 
 });
