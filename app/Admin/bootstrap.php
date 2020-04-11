@@ -33,6 +33,6 @@ use Dcat\Admin\Show;
  });
 
  // 自定义头部导航条 TODO: 下拉选择商户
- Admin::navbar(function (Navbar $navbar){
-   $navbar->left(view('search-bar'));
- });
+//  Admin::navbar(function (Navbar $navbar){
+//    $navbar->left(view('search-bar'));
+//  });

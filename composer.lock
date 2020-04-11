@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f34a4ddbce67a6f148786d3c181ed0d",
+    "content-hash": "e50f5fd25c068099e0837e7a27457a5a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -253,16 +253,16 @@
         },
         {
             "name": "dcat/laravel-admin",
-            "version": "0.5.0",
+            "version": "0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jqhph/dcat-admin.git",
-                "reference": "b88f889bb4aacfbb97fa4f581fca262decb6b834"
+                "reference": "8d7ebc814758f9b4821e8a91d3fe78d03e25f59e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jqhph/dcat-admin/zipball/b88f889bb4aacfbb97fa4f581fca262decb6b834",
-                "reference": "b88f889bb4aacfbb97fa4f581fca262decb6b834",
+                "url": "https://api.github.com/repos/jqhph/dcat-admin/zipball/8d7ebc814758f9b4821e8a91d3fe78d03e25f59e",
+                "reference": "8d7ebc814758f9b4821e8a91d3fe78d03e25f59e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -279,11 +279,8 @@
                 "symfony/dom-crawler": "~3.1|~4.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.15",
                 "fzaninotto/faker": "^1.4",
                 "laravel/dusk": "~5.9",
-                "laravel/laravel": "~5.5|~6",
-                "matt-allan/laravel-code-style": "^0.3.0",
                 "mockery/mockery": "^1.0",
                 "phpstan/phpstan": "^0.12.0",
                 "phpunit/phpunit": "^7.5"
@@ -324,7 +321,7 @@
                 "laravel",
                 "laravel admin"
             ],
-            "time": "2020-03-31T06:18:19+00:00"
+            "time": "2020-04-10T15:56:24+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
