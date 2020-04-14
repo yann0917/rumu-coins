@@ -1,0 +1,25 @@
+{
+    "code": 1,
+    "message": "",
+    "data": {
+        "id": 7,
+        "issue": 7,
+        "start_at": "2020-04-12 23:14:07",
+        "end_at": "2020-04-15 23:14:13",
+        "status": 1,
+        "category": [
+            {
+                "category": "龙钞补号"
+            },
+            {
+                "category": "渣打150"
+            },
+            {
+                "category": "航天号"
+            },
+            {
+                "category": "荷花钞"
+            }
+        ]
+    }
+}

@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "2e66db90-4b5b-498b-aea5-fdad17e333d9",
+        "_postman_id": "d63df908-4e3f-4f7b-85a3-fb4fd15f13ab",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -46,13 +46,48 @@
             "description": "APIs for managing \u56e2\u8d2d",
             "item": [
                 {
+                    "name": "\u83b7\u53d6\u56e2\u8d2d\u5206\u7c7b",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/group\/category\/:group_id",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
                     "name": "\u83b7\u53d6\u6700\u8fd1\u4e00\u4e2a\u5c0f\u65f6\u540e\u5f00\u59cb\u6216\u8005\u6b63\u5728\u8fdb\u884c\u4e2d\u7684\u7684\u56e2\u8d2d",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "rumu.top",
                             "path": "api\/group",
-                            "query": []
+                            "query": [
+                                {
+                                    "key": "category",
+                                    "value": "architecto",
+                                    "description": "string \u5546\u54c1\u5206\u7c7b",
+                                    "disabled": false
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -95,7 +130,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"goods_id\": 1,\n    \"group_id\": 12,\n    \"price\": 1\n}"
+                            "raw": "{\n    \"goods_id\": 5,\n    \"group_id\": 11,\n    \"price\": 13\n}"
                         },
                         "description": "",
                         "response": []
@@ -139,13 +174,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "corporis",
+                                    "value": "tempora",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "molestias",
+                                    "value": "amet",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -186,13 +221,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "autem",
+                                    "value": "enim",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "consequatur",
+                                    "value": "accusantium",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -307,7 +342,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"code\": \"deserunt\",\n    \"iv\": \"earum\",\n    \"encryptedData\": \"voluptatem\"\n}"
+                            "raw": "{\n    \"code\": \"tempora\",\n    \"iv\": \"id\",\n    \"encryptedData\": \"quos\"\n}"
                         },
                         "description": "",
                         "response": []

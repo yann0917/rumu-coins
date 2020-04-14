@@ -37,52 +37,87 @@ class GroupConfig extends BaseModel
     /**
      * 获取最近一个小时后开始或者正在进行中的的团购
      *
-     * @param int $user_id
      * @return array
      */
-    public function getLatestGroup(int $user_id = 0)
+    public function getLatestGroup()
     {
         $now = date('Y-m-d H:i:s');
-        $detail = $this->with(['goods'])
-            ->where([['start_at' ,'<=', $now],['end_at' , '>', $now]])
-            ->orWhere([['start_at' ,'>=', $now], ['start_at' ,'<=', date('Y-m-d H:i:s', strtotime('+1 Hour'))]])
+        $detail = $this->where([['start_at', '<=', $now], ['end_at', '>', $now]])
+            ->orWhere([['start_at', '>=', $now], ['start_at', '<=', date('Y-m-d H:i:s', strtotime('+1 Hour'))]])
             ->orderBy('issue', 'desc')->first();
-
         if (isset($detail['id'])) {
             $detail = $detail->toArray();
             $detail['status'] = $this->getGroupStatus($detail['start_at'], $detail['end_at']);
-            $detail['goods'] = $this->goodsSubGroup($detail['goods'] );
-            if ($user_id) {
-                // 我的
-                $group =new Group();
-                 $list = $group->getListByUserId($user_id, $detail['id']);
-                 foreach ($list as &$item) {
-                     $item['goods']['bid'] = $group->getCurrentUser($item['goods_id']) ?? (object)[];
-                 }
-                $detail['joined'] = $list;
-            }
         }
         return $detail;
+    }
+
+    public function getLatestGroupGoods(int $limit, string $category, int $user_id = 0)
+    {
+        $config = $this->getLatestGroup();
+        $list = (new GroupCoin())->where([['group_id', '=', $config['id']], ['category', '=', $category]])
+            ->paginate($limit);
+        $response = [
+            'current_page' => $list->currentPage(),
+            'list' => $list->items(),
+            'total' => $list->total(),
+        ];
+        $group = new Group();
+        foreach ($response['list'] as &$item) {
+            $item['bid'] = $group->getCurrentUser($item['id']) ?? (object)[];
+        }
+        if ($user_id) {
+            $response['joined'] = $this->myJoined($user_id, $config['id']);
+        }
+
+        return $response;
+    }
+
+    /**
+     * 获取分类
+     *
+     * @param int $group_id
+     * @return array
+     */
+    public function getGroupCategory(int $group_id = 0)
+    {
+        $config = $this->where('id', $group_id)->first()->toArray();
+        $config['status'] = $this->getGroupStatus($config['start_at'], $config['end_at']);
+        $config['category'] = (new GroupCoin())->select('category')
+            ->where('group_id', $group_id)
+            ->groupBy('category')->get();
+        return $config;
+    }
+
+    public function myJoined(int $user_id, $group_id)
+    {
+        // 我的
+        $group = new Group();
+        $list = $group->getListByUserId($user_id, $group_id);
+        foreach ($list as &$item) {
+            $item['goods']['bid'] = $group->getCurrentUser($item['goods_id']) ?? (object)[];
+        }
+        return $list;
     }
 
     /**
      * 转换团购状态
      *
      * @param string $start_at 开始时间
-     * @param string $end_at 结束时间
+     * @param string $end_at   结束时间
      * @return int 0-未开始，1-进行中，2-已结束
      */
-    public function getGroupStatus(string $start_at, string $end_at):int
+    public function getGroupStatus(string $start_at, string $end_at): int
     {
         $now = date('Y-m-d H:i:s');
-        if ( $now >= $start_at && $now < $end_at) {
+        if ($now >= $start_at && $now < $end_at) {
             $status = 1;
         } elseif ($now >= $end_at && $now >= $start_at) {
             $status = 2;
         } else {
             $status = 0;
         }
-        return  $status;
+        return $status;
     }
 
     /**
@@ -91,7 +126,7 @@ class GroupConfig extends BaseModel
      * @param array $goods
      * @return array
      */
-    public function goodsSubGroup(array $goods):array
+    public function goodsSubGroup(array $goods): array
     {
         $group = new Group();
         $temp_category = [];
@@ -106,6 +141,6 @@ class GroupConfig extends BaseModel
             }
             $temp[$key]['goods'] = $item;
         }
-        return  array_values($temp);
+        return array_values($temp);
     }
 }
