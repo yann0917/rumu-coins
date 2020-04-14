@@ -39,11 +39,13 @@ class GroupController extends BaseController
     /**
      * 获取最近一个小时后开始或者正在进行中的的团购
      *
+     * @responseFile responses/group.get.json
      * @return JsonResponse
      */
     public function index()
     {
-        $detail = $this->groupConfig->getLatestGroup();
+        $user_id = 2;
+        $detail = $this->groupConfig->getLatestGroup($user_id);
         return $this->success($detail);
     }
 
@@ -52,11 +54,12 @@ class GroupController extends BaseController
      *
      * @queryParam page 页码 默认 1
      * @queryParam limit 每页条数 默认15
+     * @responseFile responses/my.group.get.json
      * @return JsonResponse
      */
     public function userGroup()
     {
-        $user_id = 1;
+        $user_id = 2;
         $limit = $this->request->get('limit', 15);
         $list = $this->group->userGroup($limit, $user_id);
         return $this->success($list);
@@ -64,6 +67,9 @@ class GroupController extends BaseController
     /**
      * 参与竞价
      *
+     * @bodyParam goods_id int required 商品 ID
+     * @bodyParam group_id int required 团购 ID
+     * @bodyParam price int required 出价（分）
      * @return JsonResponse
      * @throws ApiException
      */
@@ -97,6 +103,7 @@ class GroupController extends BaseController
         if ($params['price'] <= $currentPrice) {
             throw new ApiException(Errors::ERR_GROUP_BID_FAILED);
         }
+        $params['user_id'] = $user_id; //TODO:
         $res = $this->group->store($params);
         return  $this->success($res);
     }

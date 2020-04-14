@@ -1,0 +1,85 @@
+{
+    "code": 1,
+    "message": "",
+    "data": {
+        "current_page": 1,
+        "list": [
+            {
+                "id": 5,
+                "user_id": 2,
+                "group_id": 7,
+                "goods_id": 145,
+                "price": 36002,
+                "status": 1,
+                "bid_status": 0,
+                "config": {
+                    "id": 7,
+                    "issue": 7,
+                    "start_at": "2020-04-11 23:14:07",
+                    "end_at": "2020-04-14 23:14:13"
+                },
+                "goods": {
+                    "id": 145,
+                    "group_id": 7,
+                    "sn": "U9T0069000",
+                    "category": "龙钞补号",
+                    "score": " 67E",
+                    "sn_no": "豹子号",
+                    "low_price": 20000,
+                    "top_price": 40000
+                }
+            },
+            {
+                "id": 8,
+                "user_id": 2,
+                "group_id": 7,
+                "goods_id": 146,
+                "price": 35101,
+                "status": 2,
+                "bid_status": 0,
+                "config": {
+                    "id": 7,
+                    "issue": 7,
+                    "start_at": "2020-04-11 23:14:07",
+                    "end_at": "2020-04-14 23:14:13"
+                },
+                "goods": {
+                    "id": 146,
+                    "group_id": 7,
+                    "sn": "U9T0069001",
+                    "category": "龙钞补号",
+                    "score": " 68E",
+                    "sn_no": "豹子号",
+                    "low_price": 20100,
+                    "top_price": 40100
+                }
+            },
+            {
+                "id": 4,
+                "user_id": 2,
+                "group_id": 5,
+                "goods_id": 43,
+                "price": 34000,
+                "status": 1,
+                "bid_status": 1,
+                "config": {
+                    "id": 5,
+                    "issue": 5,
+                    "start_at": "2020-04-09 11:46:03",
+                    "end_at": "2020-04-09 18:46:07"
+                },
+                "goods": {
+                    "id": 43,
+                    "group_id": 5,
+                    "sn": "U9T0069000",
+                    "category": "龙钞补号",
+                    "score": " 67E",
+                    "sn_no": "豹子号",
+                    "low_price": 20000,
+                    "top_price": 40000
+                }
+            }
+        ],
+        "total": 3
+    }
+}

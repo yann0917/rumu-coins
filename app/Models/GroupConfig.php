@@ -23,22 +23,44 @@ class GroupConfig extends BaseModel
         return $this->hasMany(Group::class, 'group_id', 'id');
     }
 
+    public function show(int $group_id)
+    {
+        $detail = $this->where('id', $group_id)->with(['goods'])->first();
+        if (isset($detail['id'])) {
+            $detail = $detail->toArray();
+            $detail['status'] = $this->getGroupStatus($detail['start_at'], $detail['end_at']);
+            $detail['goods'] = $this->goodsSubGroup($detail['goods']);
+        }
+        return $detail;
+    }
+
     /**
      * 获取最近一个小时后开始或者正在进行中的的团购
      *
+     * @param int $user_id
      * @return array
      */
-    public function getLatestGroup()
+    public function getLatestGroup(int $user_id = 0)
     {
         $now = date('Y-m-d H:i:s');
         $detail = $this->with(['goods'])
             ->where([['start_at' ,'<=', $now],['end_at' , '>', $now]])
             ->orWhere([['start_at' ,'>=', $now], ['start_at' ,'<=', date('Y-m-d H:i:s', strtotime('+1 Hour'))]])
-            ->orderBy('issue', 'desc')->first()->toArray();
+            ->orderBy('issue', 'desc')->first();
 
         if (isset($detail['id'])) {
+            $detail = $detail->toArray();
             $detail['status'] = $this->getGroupStatus($detail['start_at'], $detail['end_at']);
             $detail['goods'] = $this->goodsSubGroup($detail['goods'] );
+            if ($user_id) {
+                // 我的
+                $group =new Group();
+                 $list = $group->getListByUserId($user_id, $detail['id']);
+                 foreach ($list as &$item) {
+                     $item['goods']['bid'] = $group->getCurrentUser($item['goods_id']) ?? (object)[];
+                 }
+                $detail['joined'] = $list;
+            }
         }
         return $detail;
     }
@@ -71,13 +93,17 @@ class GroupConfig extends BaseModel
      */
     public function goodsSubGroup(array $goods):array
     {
+        $group = new Group();
         $temp_category = [];
         $temp = [];
         foreach ($goods as $key => $item) {
             $temp_category[$item['category']][] = $item;
         }
-        foreach ($temp_category as $key => $item) {
+        foreach ($temp_category as $key => &$item) {
             $temp[$key]['category'] = $key;
+            foreach ($item as &$item2) {
+                $item2['bid'] = $group->getCurrentUser($item2['id']) ?? (object)[];
+            }
             $temp[$key]['goods'] = $item;
         }
         return  array_values($temp);

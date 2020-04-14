@@ -26,6 +26,9 @@ class GroupBuyingController extends BaseController
     /**
      * 往期团购列表
      *
+     * @queryParam page 页码 默认 1
+     * @queryParam limit 每页条数 默认15
+     * @responseFile responses/history.list.get.json
      * @return JsonResponse
      */
     public function index()
@@ -65,15 +68,16 @@ class GroupBuyingController extends BaseController
     }
 
     /**
-     * Display the specified resource.
+     * 往期团购详情
      *
+     * @responseFile responses/history.get.json
      * @param int $id
      * @return JsonResponse
      */
     public function show($id)
     {
-        $detail = $this->groupConfig->where('id', $id)->with(['goods'])->first();
-        // TODO: 是否竞猜
+        $detail = $this->groupConfig->show($id);
+
         return $this->success($detail);
     }
 
