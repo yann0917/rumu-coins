@@ -28,6 +28,7 @@ Route::group([
 });
 
 Route::group(['prefix' => 'group'], function ($route) {
+    $route->get('category/{group_id?}', 'GroupController@category');
     $route->get('', 'GroupController@index');
     $route->post('', 'GroupController@store');
     $route->get('current/price/{goods_id}', 'GroupController@currentPrice'); // 当前价

@@ -39,14 +39,39 @@ class GroupController extends BaseController
     /**
      * 获取最近一个小时后开始或者正在进行中的的团购
      *
+     * @queryParam category required string 商品分类
      * @responseFile responses/group.get.json
      * @return JsonResponse
+     * @throws ApiException
      */
     public function index()
     {
+        $limit = $this->request->get('limit', 15);
+        $category = $this->request->get('category', '');
+        if ($category == '') {
+            throw new ApiException(Errors::ERR_PARAM);
+        }
         $user_id = 2;
-        $detail = $this->groupConfig->getLatestGroup($user_id);
+        $detail = $this->groupConfig->getLatestGroupGoods($limit, $category, $user_id);
         return $this->success($detail);
+    }
+
+    /**
+     * 获取团购分类
+     *
+     * @urlParam group_id  团购 ID，不传则为当前团购的ID
+     * @responseFile responses/category.get.json
+     * @param int $group_id
+     * @return JsonResponse
+     */
+    public function category(int $group_id = 0)
+    {
+        if (!$group_id) {
+            $config = $this->groupConfig->getLatestGroup();
+            $group_id = $config['id'];
+        }
+        $category = $this->groupConfig->getGroupCategory($group_id);
+        return $this->success($category);
     }
 
     /**
