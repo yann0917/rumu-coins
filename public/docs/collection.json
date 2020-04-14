@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "bd047dfe-aa33-4bd0-a337-fc9853bcbe4b",
+        "_postman_id": "2e66db90-4b5b-498b-aea5-fdad17e333d9",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -46,7 +46,91 @@
             "description": "APIs for managing \u56e2\u8d2d",
             "item": [
                 {
-                    "name": "Display a listing of the resource.",
+                    "name": "\u83b7\u53d6\u6700\u8fd1\u4e00\u4e2a\u5c0f\u65f6\u540e\u5f00\u59cb\u6216\u8005\u6b63\u5728\u8fdb\u884c\u4e2d\u7684\u7684\u56e2\u8d2d",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/group",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "\u53c2\u4e0e\u7ade\u4ef7",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/group",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"goods_id\": 1,\n    \"group_id\": 12,\n    \"price\": 1\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "api\/group\/current\/price\/{goods_id}",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/group\/current\/price\/:goods_id",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "\u6211\u53c2\u4e0e\u7684\u56e2\u8d2d",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -55,13 +139,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "enim",
+                                    "value": "corporis",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "quam",
+                                    "value": "molestias",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -99,7 +183,20 @@
                             "protocol": "http",
                             "host": "rumu.top",
                             "path": "api\/group\/history",
-                            "query": []
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "autem",
+                                    "description": "\u9875\u7801 \u9ed8\u8ba4 1",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "consequatur",
+                                    "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
+                                    "disabled": false
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -121,7 +218,7 @@
                     }
                 },
                 {
-                    "name": "Display the specified resource.",
+                    "name": "\u5f80\u671f\u56e2\u8d2d\u8be6\u60c5",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -210,7 +307,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"code\": \"inventore\",\n    \"iv\": \"esse\",\n    \"encryptedData\": \"quia\"\n}"
+                            "raw": "{\n    \"code\": \"deserunt\",\n    \"iv\": \"earum\",\n    \"encryptedData\": \"voluptatem\"\n}"
                         },
                         "description": "",
                         "response": []

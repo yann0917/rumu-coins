@@ -104,25 +104,578 @@ fetch(url, {
 <!-- END_400fb4764df1b01a1c10c5790a4e4f40 -->
 <h1>团购</h1>
 <p>APIs for managing 团购</p>
-<!-- START_fbd217206b7ff0dd4115c12269ae3546 -->
-<h2>Display a listing of the resource.</h2>
+<!-- START_cd0989d58a35300421075d377cb10925 -->
+<h2>获取最近一个小时后开始或者正在进行中的的团购</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://rumu.top/api/group/my?page=enim&amp;limit=quam" \
+    -G "http://rumu.top/api/group" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://rumu.top/api/group/my"
+    "http://rumu.top/api/group"
 );
 
-let params = {
-    "page": "enim",
-    "limit": "quam",
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
 };
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "code": 1,
+    "message": "",
+    "data": {
+        "id": 7,
+        "issue": 7,
+        "start_at": "2020-04-11 23:14:07",
+        "end_at": "2020-04-14 23:14:13",
+        "goods": [
+            {
+                "category": "龙钞补号",
+                "goods": [
+                    {
+                        "id": 145,
+                        "group_id": 7,
+                        "sn": "U9T0069000",
+                        "category": "龙钞补号",
+                        "score": " 67E",
+                        "sn_no": "豹子号",
+                        "low_price": 20000,
+                        "top_price": 40000,
+                        "bid": {
+                            "user_id": 2,
+                            "nickname": "zzz",
+                            "price": 36002
+                        }
+                    },
+                    {
+                        "id": 146,
+                        "group_id": 7,
+                        "sn": "U9T0069001",
+                        "category": "龙钞补号",
+                        "score": " 68E",
+                        "sn_no": "豹子号",
+                        "low_price": 20100,
+                        "top_price": 40100,
+                        "bid": {
+                            "user_id": 3,
+                            "nickname": "yyy",
+                            "price": 35102
+                        }
+                    },
+                    {
+                        "id": 147,
+                        "group_id": 7,
+                        "sn": "U9T0069002",
+                        "category": "龙钞补号",
+                        "score": " 69E",
+                        "sn_no": "豹子号",
+                        "low_price": 20200,
+                        "top_price": 40200,
+                        "bid": []
+                    },
+                    {
+                        "id": 148,
+                        "group_id": 7,
+                        "sn": "U9T0069003",
+                        "category": "龙钞补号",
+                        "score": " 70E",
+                        "sn_no": "豹子号",
+                        "low_price": 20300,
+                        "top_price": 40300,
+                        "bid": []
+                    },
+                    {
+                        "id": 149,
+                        "group_id": 7,
+                        "sn": "U9T0069004",
+                        "category": "龙钞补号",
+                        "score": " 71E",
+                        "sn_no": "豹子号",
+                        "low_price": 20400,
+                        "top_price": 40400,
+                        "bid": []
+                    },
+                    {
+                        "id": 150,
+                        "group_id": 7,
+                        "sn": "U9T0069005",
+                        "category": "龙钞补号",
+                        "score": " 72E",
+                        "sn_no": "豹子号",
+                        "low_price": 20500,
+                        "top_price": 40500,
+                        "bid": []
+                    },
+                    {
+                        "id": 151,
+                        "group_id": 7,
+                        "sn": "U9T0069006",
+                        "category": "龙钞补号",
+                        "score": " 73E",
+                        "sn_no": "豹子号",
+                        "low_price": 20600,
+                        "top_price": 40600,
+                        "bid": []
+                    },
+                    {
+                        "id": 152,
+                        "group_id": 7,
+                        "sn": "U9T0069007",
+                        "category": "龙钞补号",
+                        "score": " 74E",
+                        "sn_no": "豹子号",
+                        "low_price": 20700,
+                        "top_price": 40700,
+                        "bid": []
+                    },
+                    {
+                        "id": 153,
+                        "group_id": 7,
+                        "sn": "U9T0069008",
+                        "category": "龙钞补号",
+                        "score": " 75E",
+                        "sn_no": "豹子号",
+                        "low_price": 20800,
+                        "top_price": 40800,
+                        "bid": []
+                    },
+                    {
+                        "id": 154,
+                        "group_id": 7,
+                        "sn": "U9T0069009",
+                        "category": "龙钞补号",
+                        "score": " 76E",
+                        "sn_no": "豹子号",
+                        "low_price": 20900,
+                        "top_price": 40900,
+                        "bid": []
+                    },
+                    {
+                        "id": 155,
+                        "group_id": 7,
+                        "sn": "U9T0069010",
+                        "category": "龙钞补号",
+                        "score": " 77E",
+                        "sn_no": "豹子号",
+                        "low_price": 21000,
+                        "top_price": 41000,
+                        "bid": []
+                    },
+                    {
+                        "id": 156,
+                        "group_id": 7,
+                        "sn": "U9T0069011",
+                        "category": "龙钞补号",
+                        "score": " 78E",
+                        "sn_no": "豹子号",
+                        "low_price": 21100,
+                        "top_price": 41100,
+                        "bid": []
+                    }
+                ]
+            },
+            {
+                "category": "渣打150",
+                "goods": [
+                    {
+                        "id": 157,
+                        "group_id": 7,
+                        "sn": "U9T0069012",
+                        "category": "渣打150",
+                        "score": " 79E",
+                        "sn_no": "豹子号",
+                        "low_price": 21200,
+                        "top_price": 41200,
+                        "bid": []
+                    },
+                    {
+                        "id": 158,
+                        "group_id": 7,
+                        "sn": "U9T0069013",
+                        "category": "渣打150",
+                        "score": " 80E",
+                        "sn_no": "豹子号",
+                        "low_price": 21300,
+                        "top_price": 41300,
+                        "bid": []
+                    },
+                    {
+                        "id": 159,
+                        "group_id": 7,
+                        "sn": "U9T0069014",
+                        "category": "渣打150",
+                        "score": " 81E",
+                        "sn_no": "豹子号",
+                        "low_price": 21400,
+                        "top_price": 41400,
+                        "bid": []
+                    },
+                    {
+                        "id": 160,
+                        "group_id": 7,
+                        "sn": "U9T0069015",
+                        "category": "渣打150",
+                        "score": " 82E",
+                        "sn_no": "豹子号",
+                        "low_price": 21500,
+                        "top_price": 41500,
+                        "bid": []
+                    },
+                    {
+                        "id": 161,
+                        "group_id": 7,
+                        "sn": "U9T0069016",
+                        "category": "渣打150",
+                        "score": " 83E",
+                        "sn_no": "豹子号",
+                        "low_price": 21600,
+                        "top_price": 41600,
+                        "bid": []
+                    },
+                    {
+                        "id": 162,
+                        "group_id": 7,
+                        "sn": "U9T0069017",
+                        "category": "渣打150",
+                        "score": " 84E",
+                        "sn_no": "豹子号",
+                        "low_price": 21700,
+                        "top_price": 41700,
+                        "bid": []
+                    },
+                    {
+                        "id": 163,
+                        "group_id": 7,
+                        "sn": "U9T0069018",
+                        "category": "渣打150",
+                        "score": " 85E",
+                        "sn_no": "豹子号",
+                        "low_price": 21800,
+                        "top_price": 41800,
+                        "bid": []
+                    },
+                    {
+                        "id": 164,
+                        "group_id": 7,
+                        "sn": "U9T0069019",
+                        "category": "渣打150",
+                        "score": " 86E",
+                        "sn_no": "豹子号",
+                        "low_price": 21900,
+                        "top_price": 41900,
+                        "bid": []
+                    }
+                ]
+            },
+            {
+                "category": "航天号",
+                "goods": [
+                    {
+                        "id": 165,
+                        "group_id": 7,
+                        "sn": "U9T0069020",
+                        "category": "航天号",
+                        "score": " 87E",
+                        "sn_no": "豹子号",
+                        "low_price": 22000,
+                        "top_price": 42000,
+                        "bid": []
+                    },
+                    {
+                        "id": 166,
+                        "group_id": 7,
+                        "sn": "U9T0069021",
+                        "category": "航天号",
+                        "score": " 88E",
+                        "sn_no": "豹子号",
+                        "low_price": 22100,
+                        "top_price": 42100,
+                        "bid": []
+                    },
+                    {
+                        "id": 167,
+                        "group_id": 7,
+                        "sn": "U9T0069022",
+                        "category": "航天号",
+                        "score": " 89E",
+                        "sn_no": "豹子号",
+                        "low_price": 22200,
+                        "top_price": 42200,
+                        "bid": []
+                    },
+                    {
+                        "id": 168,
+                        "group_id": 7,
+                        "sn": "U9T0069023",
+                        "category": "航天号",
+                        "score": " 90E",
+                        "sn_no": "豹子号",
+                        "low_price": 22300,
+                        "top_price": 42300,
+                        "bid": []
+                    },
+                    {
+                        "id": 169,
+                        "group_id": 7,
+                        "sn": "U9T0069024",
+                        "category": "航天号",
+                        "score": " 91E",
+                        "sn_no": "豹子号",
+                        "low_price": 22400,
+                        "top_price": 42400,
+                        "bid": []
+                    },
+                    {
+                        "id": 170,
+                        "group_id": 7,
+                        "sn": "U9T0069025",
+                        "category": "航天号",
+                        "score": " 92E",
+                        "sn_no": "豹子号",
+                        "low_price": 22500,
+                        "top_price": 42500,
+                        "bid": []
+                    },
+                    {
+                        "id": 171,
+                        "group_id": 7,
+                        "sn": "U9T0069026",
+                        "category": "航天号",
+                        "score": " 93E",
+                        "sn_no": "豹子号",
+                        "low_price": 22600,
+                        "top_price": 42600,
+                        "bid": []
+                    }
+                ]
+            },
+            {
+                "category": "荷花钞",
+                "goods": [
+                    {
+                        "id": 172,
+                        "group_id": 7,
+                        "sn": "U9T0069027",
+                        "category": "荷花钞",
+                        "score": " 94E",
+                        "sn_no": "豹子号",
+                        "low_price": 22700,
+                        "top_price": 42700,
+                        "bid": []
+                    },
+                    {
+                        "id": 173,
+                        "group_id": 7,
+                        "sn": "U9T0069028",
+                        "category": "荷花钞",
+                        "score": " 95E",
+                        "sn_no": "豹子号",
+                        "low_price": 22800,
+                        "top_price": 42800,
+                        "bid": []
+                    },
+                    {
+                        "id": 174,
+                        "group_id": 7,
+                        "sn": "U9T0069029",
+                        "category": "荷花钞",
+                        "score": " 96E",
+                        "sn_no": "豹子号",
+                        "low_price": 22900,
+                        "top_price": 42900,
+                        "bid": []
+                    },
+                    {
+                        "id": 175,
+                        "group_id": 7,
+                        "sn": "U9T0069030",
+                        "category": "荷花钞",
+                        "score": " 97E",
+                        "sn_no": "豹子号",
+                        "low_price": 23000,
+                        "top_price": 43000,
+                        "bid": []
+                    },
+                    {
+                        "id": 176,
+                        "group_id": 7,
+                        "sn": "U9T0069031",
+                        "category": "荷花钞",
+                        "score": " 98E",
+                        "sn_no": "豹子号",
+                        "low_price": 23100,
+                        "top_price": 43100,
+                        "bid": []
+                    },
+                    {
+                        "id": 177,
+                        "group_id": 7,
+                        "sn": "U9T0069032",
+                        "category": "荷花钞",
+                        "score": " 99E",
+                        "sn_no": "豹子号",
+                        "low_price": 23200,
+                        "top_price": 43200,
+                        "bid": []
+                    },
+                    {
+                        "id": 178,
+                        "group_id": 7,
+                        "sn": "U9T0069033",
+                        "category": "荷花钞",
+                        "score": " 100E",
+                        "sn_no": "豹子号",
+                        "low_price": 23300,
+                        "top_price": 43300,
+                        "bid": []
+                    }
+                ]
+            }
+        ],
+        "status": 1,
+        "joined": [
+            {
+                "id": 5,
+                "user_id": 2,
+                "group_id": 7,
+                "goods_id": 145,
+                "price": 36002,
+                "status": 1,
+                "goods": {
+                    "id": 145,
+                    "group_id": 7,
+                    "sn": "U9T0069000",
+                    "category": "龙钞补号",
+                    "score": " 67E",
+                    "sn_no": "豹子号",
+                    "low_price": 20000,
+                    "top_price": 40000,
+                    "bid": {
+                        "user_id": 2,
+                        "nickname": "zzz",
+                        "price": 36002
+                    }
+                }
+            },
+            {
+                "id": 8,
+                "user_id": 2,
+                "group_id": 7,
+                "goods_id": 146,
+                "price": 35101,
+                "status": 2,
+                "goods": {
+                    "id": 146,
+                    "group_id": 7,
+                    "sn": "U9T0069001",
+                    "category": "龙钞补号",
+                    "score": " 68E",
+                    "sn_no": "豹子号",
+                    "low_price": 20100,
+                    "top_price": 40100,
+                    "bid": {
+                        "user_id": 3,
+                        "nickname": "yyy",
+                        "price": 35102
+                    }
+                }
+            }
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/group</code></p>
+<!-- END_cd0989d58a35300421075d377cb10925 -->
+<!-- START_574eb03c7487fd3b774a8fdd1b988fc9 -->
+<h2>参与竞价</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://rumu.top/api/group" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"goods_id":1,"group_id":12,"price":1}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://rumu.top/api/group"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "goods_id": 1,
+    "group_id": 12,
+    "price": 1
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/group</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>goods_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>商品 ID</td>
+</tr>
+<tr>
+<td><code>group_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>团购 ID</td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td>integer</td>
+<td>required</td>
+<td>出价（分）</td>
+</tr>
+</tbody>
+</table>
+<!-- END_574eb03c7487fd3b774a8fdd1b988fc9 -->
+<!-- START_9bfd1aa1092fc96c4aadc47e16b5e31f -->
+<h2>api/group/current/price/{goods_id}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://rumu.top/api/group/current/price/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://rumu.top/api/group/current/price/1"
+);
 
 let headers = {
     "Content-Type": "application/json",
@@ -142,6 +695,128 @@ fetch(url, {
     "code": 0,
     "message": "Please make sure the PHP Redis extension is installed and enabled.",
     "data": {}
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/group/current/price/{goods_id}</code></p>
+<!-- END_9bfd1aa1092fc96c4aadc47e16b5e31f -->
+<!-- START_fbd217206b7ff0dd4115c12269ae3546 -->
+<h2>我参与的团购</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://rumu.top/api/group/my?page=corporis&amp;limit=molestias" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://rumu.top/api/group/my"
+);
+
+let params = {
+    "page": "corporis",
+    "limit": "molestias",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "code": 1,
+    "message": "",
+    "data": {
+        "current_page": 1,
+        "list": [
+            {
+                "id": 5,
+                "user_id": 2,
+                "group_id": 7,
+                "goods_id": 145,
+                "price": 36002,
+                "status": 1,
+                "bid_status": 0,
+                "config": {
+                    "id": 7,
+                    "issue": 7,
+                    "start_at": "2020-04-11 23:14:07",
+                    "end_at": "2020-04-14 23:14:13"
+                },
+                "goods": {
+                    "id": 145,
+                    "group_id": 7,
+                    "sn": "U9T0069000",
+                    "category": "龙钞补号",
+                    "score": " 67E",
+                    "sn_no": "豹子号",
+                    "low_price": 20000,
+                    "top_price": 40000
+                }
+            },
+            {
+                "id": 8,
+                "user_id": 2,
+                "group_id": 7,
+                "goods_id": 146,
+                "price": 35101,
+                "status": 2,
+                "bid_status": 0,
+                "config": {
+                    "id": 7,
+                    "issue": 7,
+                    "start_at": "2020-04-11 23:14:07",
+                    "end_at": "2020-04-14 23:14:13"
+                },
+                "goods": {
+                    "id": 146,
+                    "group_id": 7,
+                    "sn": "U9T0069001",
+                    "category": "龙钞补号",
+                    "score": " 68E",
+                    "sn_no": "豹子号",
+                    "low_price": 20100,
+                    "top_price": 40100
+                }
+            },
+            {
+                "id": 4,
+                "user_id": 2,
+                "group_id": 5,
+                "goods_id": 43,
+                "price": 34000,
+                "status": 1,
+                "bid_status": 1,
+                "config": {
+                    "id": 5,
+                    "issue": 5,
+                    "start_at": "2020-04-09 11:46:03",
+                    "end_at": "2020-04-09 18:46:07"
+                },
+                "goods": {
+                    "id": 43,
+                    "group_id": 5,
+                    "sn": "U9T0069000",
+                    "category": "龙钞补号",
+                    "score": " 67E",
+                    "sn_no": "豹子号",
+                    "low_price": 20000,
+                    "top_price": 40000
+                }
+            }
+        ],
+        "total": 3
+    }
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/group/my</code></p>
@@ -176,12 +851,19 @@ fetch(url, {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://rumu.top/api/group/history" \
+    -G "http://rumu.top/api/group/history?page=autem&amp;limit=consequatur" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://rumu.top/api/group/history"
 );
+
+let params = {
+    "page": "autem",
+    "limit": "consequatur",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 let headers = {
     "Content-Type": "application/json",
@@ -198,15 +880,54 @@ fetch(url, {
 <p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "code": 0,
-    "message": "Please make sure the PHP Redis extension is installed and enabled.",
-    "data": {}
+    "code": 1,
+    "message": "",
+    "data": {
+        "current_page": 1,
+        "list": [
+            {
+                "id": 6,
+                "issue": 6,
+                "start_at": "2020-04-10 08:15:16",
+                "end_at": "2020-04-11 08:15:18"
+            },
+            {
+                "id": 5,
+                "issue": 5,
+                "start_at": "2020-04-09 11:46:03",
+                "end_at": "2020-04-09 18:46:07"
+            }
+        ],
+        "total": 2
+    }
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/group/history</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td>optional</td>
+<td>页码 默认 1</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>optional</td>
+<td>每页条数 默认15</td>
+</tr>
+</tbody>
+</table>
 <!-- END_7d36bcda012ed60b6ecbdae9d934ca52 -->
 <!-- START_e8ceda0cc8200028e6aec27ea3437230 -->
-<h2>Display the specified resource.</h2>
+<h2>往期团购详情</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -233,9 +954,48 @@ fetch(url, {
 <p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "code": 0,
-    "message": "Please make sure the PHP Redis extension is installed and enabled.",
-    "data": {}
+    "code": 1,
+    "message": "",
+    "data": {
+        "id": 1,
+        "issue": 1,
+        "start_at": "2020-04-01 10:01:26",
+        "end_at": "2020-04-02 10:01:35",
+        "goods": [
+            {
+                "category": "龙钞补号",
+                "goods": [
+                    {
+                        "id": 1,
+                        "group_id": 1,
+                        "sn": "U9T0069000",
+                        "category": "龙钞补号",
+                        "score": " 67E",
+                        "sn_no": "豹子号",
+                        "low_price": 20000,
+                        "top_price": 40000,
+                        "bid": {
+                            "user_id": 1,
+                            "nickname": "赵亚博²º²º",
+                            "price": 20000
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "group_id": 1,
+                        "sn": "U9T0069001",
+                        "category": "龙钞补号",
+                        "score": " 68E",
+                        "sn_no": "豹子号",
+                        "low_price": 20100,
+                        "top_price": 40100,
+                        "bid": []
+                    }
+                ]
+            }
+        ],
+        "status": 2
+    }
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/group/history/{history}</code></p>
@@ -291,7 +1051,7 @@ fetch(url, {
     "http://rumu.top/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"code":"inventore","iv":"esse","encryptedData":"quia"}'
+    -d '{"code":"deserunt","iv":"earum","encryptedData":"voluptatem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://rumu.top/api/auth/login"
@@ -303,9 +1063,9 @@ let headers = {
 };
 
 let body = {
-    "code": "inventore",
-    "iv": "esse",
-    "encryptedData": "quia"
+    "code": "deserunt",
+    "iv": "earum",
+    "encryptedData": "voluptatem"
 }
 
 fetch(url, {
