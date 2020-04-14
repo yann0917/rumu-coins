@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "5991d50f-11fc-4fac-ad47-7fa22e4c253e",
+        "_postman_id": "83198877-497e-49f7-9d56-9c9e34ed141b",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -29,6 +29,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -63,6 +67,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -83,19 +91,19 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "dolor",
+                                    "value": "quis",
                                     "description": "string  \u9875\u7801",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "ea",
+                                    "value": "dolorem",
                                     "description": "string  \u6bcf\u9875\u5c55\u793a\u6570\u91cf\uff0c\u9ed8\u8ba415",
                                     "disabled": false
                                 },
                                 {
                                     "key": "category",
-                                    "value": "quia",
+                                    "value": "dolores",
                                     "description": "string \u5546\u54c1\u5206\u7c7b",
                                     "disabled": false
                                 }
@@ -110,6 +118,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -138,11 +150,15 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"goods_id\": 11,\n    \"group_id\": 8,\n    \"price\": 8\n}"
+                            "raw": "{\n    \"goods_id\": 15,\n    \"group_id\": 17,\n    \"price\": 16\n}"
                         },
                         "description": "",
                         "response": []
@@ -160,7 +176,7 @@
                                 {
                                     "id": "goods_id",
                                     "key": "goods_id",
-                                    "value": "tempora",
+                                    "value": "eum",
                                     "description": "int \u5546\u54c1 ID"
                                 }
                             ]
@@ -174,6 +190,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -194,13 +214,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "culpa",
+                                    "value": "libero",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "ut",
+                                    "value": "et",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -215,6 +235,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -241,13 +265,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "ea",
+                                    "value": "dolores",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "consequatur",
+                                    "value": "dolorem",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -262,6 +286,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -282,19 +310,19 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "voluptatem",
+                                    "value": "totam",
                                     "description": "string  \u9875\u7801",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "odio",
+                                    "value": "est",
                                     "description": "string  \u6bcf\u9875\u5c55\u793a\u6570\u91cf\uff0c\u9ed8\u8ba415",
                                     "disabled": false
                                 },
                                 {
                                     "key": "category",
-                                    "value": "perspiciatis",
+                                    "value": "quia",
                                     "description": "string \u5546\u54c1\u5206\u7c7b",
                                     "disabled": false
                                 }
@@ -309,6 +337,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -343,6 +375,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -377,11 +413,15 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"code\": \"ut\",\n    \"iv\": \"et\",\n    \"encryptedData\": \"soluta\"\n}"
+                            "raw": "{\n    \"code\": \"mollitia\",\n    \"iv\": \"est\",\n    \"encryptedData\": \"nesciunt\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -405,6 +445,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -433,6 +477,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {

@@ -21,6 +21,7 @@ class AuthController extends BaseController
     {
         parent::__construct($request);
         $this->user = $user;
+        $this->middleware('jwt.auth', ['except' => ['login']]);
     }
 
     /**
@@ -29,7 +30,7 @@ class AuthController extends BaseController
      * @bodyParam code string required wx.login() 获取
      * @bodyParam iv string required 加密算法的初始向量 IV.
      * @bodyParam encryptedData string required 包括敏感数据在内的完整用户信息的加密数据.
-     *
+     * @responseFile responses/auth.login.json
      * @return \Illuminate\Http\JsonResponse
      * @throws ApiException
      */
@@ -65,7 +66,19 @@ class AuthController extends BaseController
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        return $this->success($this->respondWithToken($token));
+    }
+
+    public function guest()
+    {
+        $userInfo = new User();
+        $userInfo->id = -1;
+        $userInfo->avatar = "";
+        $userInfo->nickname = "游客";
+        if (!$token = auth('api')->fromUser($userInfo)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        return $this->success($this->respondWithToken($token));
     }
 
     /**
@@ -75,7 +88,7 @@ class AuthController extends BaseController
      */
     public function me()
     {
-        return response()->json(auth('api')->user());
+        return $this->success(auth('api')->user());
     }
 
     /**
@@ -87,7 +100,7 @@ class AuthController extends BaseController
     {
         auth('api')->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return $this->success(['message' => 'Successfully logged out']);
     }
 
     /**
@@ -95,26 +108,27 @@ class AuthController extends BaseController
      * 刷新token，如果开启黑名单，以前的token便会失效。
      * 值得注意的是用上面的getToken再获取一次Token并不算做刷新，两次获得的Token是并行的，即两个都可用。
      *
+     * @responseFile responses/auth.login.json
      * @return \Illuminate\Http\JsonResponse
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth('api')->refresh());
+        return $this->success($this->respondWithToken(auth('api')->refresh()));
     }
 
     /**
      * Get the token array structure.
      *
      * @param string $token
-     * @return \Illuminate\Http\JsonResponse
+     * @return array
      */
     protected function respondWithToken($token)
     {
-        return response()->json([
+        return [
             'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60,
-        ]);
+        ];
     }
 
 

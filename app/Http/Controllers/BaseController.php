@@ -12,12 +12,12 @@ class BaseController extends Controller
     public $jwt;
     public $request;
     public $user;
+    public $user_id;
 
     public function __construct(Request $request)
     {
         $this->request = $request;
         $this->getHeaders();
-        // $this->middleware('jwt.auth', ['except' => ['login']]);
     }
 
     private function getHeaders()
@@ -27,10 +27,15 @@ class BaseController extends Controller
         $this->jwt = substr($authorization, 7);
         if ($this->jwt) {
             $this->user = auth('api')->user();
+        } else {
+            $this->user = [];
         }
+        $user_id = 0;
+        if (auth('api')->guest()) {
+            $user_id = -1;
+        }
+        $this->user_id = $this->user ? $this->user->id : $user_id;
     }
-
-
 
     /**
      * 成功响应

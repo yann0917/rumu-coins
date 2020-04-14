@@ -34,6 +34,7 @@ class GroupController extends BaseController
         $this->group = $group;
         $this->groupConfig = $groupConfig;
         $this->user = $user;
+        $this->middleware('jwt.auth', ['except' => ['index']]);
     }
 
     /**
@@ -53,7 +54,7 @@ class GroupController extends BaseController
         if ($category == '') {
             throw new ApiException(Errors::ERR_PARAM);
         }
-        $user_id = 2;
+        $user_id = $this->user_id;
         $detail = $this->groupConfig->getLatestGroupGoods($limit, $category, $user_id);
         return $this->success($detail);
     }
@@ -90,7 +91,7 @@ class GroupController extends BaseController
      */
     public function userGroup()
     {
-        $user_id = 2;
+        $user_id = $this->user_id;
         $limit = $this->request->get('limit', 15);
         $list = $this->group->userGroup($limit, $user_id);
         return $this->success($list);
@@ -125,7 +126,7 @@ class GroupController extends BaseController
             }
             throw new ApiException(Errors::ERR_PARAM, $errMsg);
         }
-        $user_id = 1;
+        $user_id = $this->user_id;
         $user = $this->user->where('id', $user_id)->first();
         if ($user->status == 0) {
             throw new ApiException(Errors::ERR_USER_BLOCK);

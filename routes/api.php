@@ -27,7 +27,7 @@ Route::group([
     Route::post('me', 'AuthController@me');
 });
 
-Route::group(['prefix' => 'group'], function ($route) {
+Route::prefix('group')->group(function ($route) {
     $route->get('category/{group_id?}', 'GroupController@category');
     $route->get('', 'GroupController@index');
     $route->post('', 'GroupController@store');

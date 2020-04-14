@@ -33,7 +33,8 @@ APIs for managing banners
 curl -X GET \
     -G "http://rumu.top/api/banners" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
@@ -44,6 +45,7 @@ const url = new URL(
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
@@ -98,19 +100,21 @@ APIs for managing 团购
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/category/cupiditate" \
+    -G "http://rumu.top/api/group/category/quia" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
 const url = new URL(
-    "http://rumu.top/api/group/category/cupiditate"
+    "http://rumu.top/api/group/category/quia"
 );
 
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
@@ -170,9 +174,10 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group?page=dolor&limit=ea&category=quia" \
+    -G "http://rumu.top/api/group?page=quis&limit=dolorem&category=dolores" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
@@ -181,9 +186,9 @@ const url = new URL(
 );
 
 let params = {
-    "page": "dolor",
-    "limit": "ea",
-    "category": "quia",
+    "page": "quis",
+    "limit": "dolorem",
+    "category": "dolores",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -191,6 +196,7 @@ Object.keys(params)
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
@@ -318,7 +324,8 @@ curl -X POST \
     "http://rumu.top/api/group" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"goods_id":11,"group_id":8,"price":8}'
+    -H "Authorization: Bearer {token}" \
+    -d '{"goods_id":15,"group_id":17,"price":16}'
 
 ```
 
@@ -330,12 +337,13 @@ const url = new URL(
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 let body = {
-    "goods_id": 11,
-    "group_id": 8,
-    "price": 8
+    "goods_id": 15,
+    "group_id": 17,
+    "price": 16
 }
 
 fetch(url, {
@@ -368,19 +376,21 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/current/price/tempora" \
+    -G "http://rumu.top/api/group/current/price/eum" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
 const url = new URL(
-    "http://rumu.top/api/group/current/price/tempora"
+    "http://rumu.top/api/group/current/price/eum"
 );
 
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
@@ -420,9 +430,10 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/my?page=culpa&limit=ut" \
+    -G "http://rumu.top/api/group/my?page=libero&limit=et" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
@@ -431,8 +442,8 @@ const url = new URL(
 );
 
 let params = {
-    "page": "culpa",
-    "limit": "ut",
+    "page": "libero",
+    "limit": "et",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -440,6 +451,7 @@ Object.keys(params)
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
@@ -564,9 +576,10 @@ APIs for managing 往期团购
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/history?page=ea&limit=consequatur" \
+    -G "http://rumu.top/api/group/history?page=dolores&limit=dolorem" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
@@ -575,8 +588,8 @@ const url = new URL(
 );
 
 let params = {
-    "page": "ea",
-    "limit": "consequatur",
+    "page": "dolores",
+    "limit": "dolorem",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -584,6 +597,7 @@ Object.keys(params)
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
@@ -641,9 +655,10 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/history/1?page=voluptatem&limit=odio&category=perspiciatis" \
+    -G "http://rumu.top/api/group/history/1?page=totam&limit=est&category=quia" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
@@ -652,9 +667,9 @@ const url = new URL(
 );
 
 let params = {
-    "page": "voluptatem",
-    "limit": "odio",
-    "category": "perspiciatis",
+    "page": "totam",
+    "limit": "est",
+    "category": "quia",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -662,6 +677,7 @@ Object.keys(params)
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
@@ -744,7 +760,8 @@ APIs for managing 微信配置
 curl -X GET \
     -G "http://rumu.top/api/wechat" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
@@ -755,6 +772,7 @@ const url = new URL(
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
@@ -798,7 +816,8 @@ curl -X POST \
     "http://rumu.top/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"code":"ut","iv":"et","encryptedData":"soluta"}'
+    -H "Authorization: Bearer {token}" \
+    -d '{"code":"mollitia","iv":"est","encryptedData":"nesciunt"}'
 
 ```
 
@@ -810,12 +829,13 @@ const url = new URL(
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 let body = {
-    "code": "ut",
-    "iv": "et",
-    "encryptedData": "soluta"
+    "code": "mollitia",
+    "iv": "est",
+    "encryptedData": "nesciunt"
 }
 
 fetch(url, {
@@ -828,6 +848,19 @@ fetch(url, {
 ```
 
 
+> Example response (200):
+
+```json
+{
+    "code": 1,
+    "message": "",
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ydW11LnRvcFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU4Njg3NjQ4NCwiZXhwIjoxNTg2OTYyODg0LCJuYmYiOjE1ODY4NzY0ODQsImp0aSI6Imk3dFdSWk9QbWVBTEJTOWsiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.-T8ngtx8mJnTsM4ZhklkWWzwe0ronA7yW1V-nWTCNIc",
+        "token_type": "bearer",
+        "expires_in": 86400
+    }
+}
+```
 
 ### HTTP Request
 `POST api/auth/login`
@@ -853,7 +886,8 @@ Parameter | Type | Status | Description
 curl -X POST \
     "http://rumu.top/api/auth/refresh" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
@@ -864,6 +898,7 @@ const url = new URL(
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
@@ -875,6 +910,19 @@ fetch(url, {
 ```
 
 
+> Example response (200):
+
+```json
+{
+    "code": 1,
+    "message": "",
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ydW11LnRvcFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU4Njg3NjQ4NCwiZXhwIjoxNTg2OTYyODg0LCJuYmYiOjE1ODY4NzY0ODQsImp0aSI6Imk3dFdSWk9QbWVBTEJTOWsiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.-T8ngtx8mJnTsM4ZhklkWWzwe0ronA7yW1V-nWTCNIc",
+        "token_type": "bearer",
+        "expires_in": 86400
+    }
+}
+```
 
 ### HTTP Request
 `POST api/auth/refresh`
@@ -891,7 +939,8 @@ fetch(url, {
 curl -X POST \
     "http://rumu.top/api/auth/me" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
@@ -902,6 +951,7 @@ const url = new URL(
 let headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer {token}",
 };
 
 fetch(url, {
