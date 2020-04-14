@@ -98,14 +98,14 @@ APIs for managing 团购
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/category/voluptatem" \
+    -G "http://rumu.top/api/group/category/at" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://rumu.top/api/group/category/voluptatem"
+    "http://rumu.top/api/group/category/at"
 );
 
 let headers = {
@@ -170,7 +170,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group?category=architecto" \
+    -G "http://rumu.top/api/group?page=mollitia&limit=perferendis&category=sit" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -181,7 +181,9 @@ const url = new URL(
 );
 
 let params = {
-    "category": "architecto",
+    "page": "mollitia",
+    "limit": "perferendis",
+    "category": "sit",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -300,6 +302,8 @@ fetch(url, {
 
 Parameter | Status | Description
 --------- | ------- | ------- | -----------
+    `page` |  required  | string  页码
+    `limit` |  required  | string  每页展示数量，默认15
     `category` |  required  | string 商品分类
 
 <!-- END_cd0989d58a35300421075d377cb10925 -->
@@ -314,7 +318,7 @@ curl -X POST \
     "http://rumu.top/api/group" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"goods_id":5,"group_id":11,"price":13}'
+    -d '{"goods_id":17,"group_id":7,"price":5}'
 
 ```
 
@@ -329,9 +333,9 @@ let headers = {
 };
 
 let body = {
-    "goods_id": 5,
-    "group_id": 11,
-    "price": 13
+    "goods_id": 17,
+    "group_id": 7,
+    "price": 5
 }
 
 fetch(url, {
@@ -358,19 +362,20 @@ Parameter | Type | Status | Description
 <!-- END_574eb03c7487fd3b774a8fdd1b988fc9 -->
 
 <!-- START_9bfd1aa1092fc96c4aadc47e16b5e31f -->
-## api/group/current/price/{goods_id}
+## 获取该商品当前团购价(分)
+
 > Example request:
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/current/price/1" \
+    -G "http://rumu.top/api/group/current/price/eum" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://rumu.top/api/group/current/price/1"
+    "http://rumu.top/api/group/current/price/eum"
 );
 
 let headers = {
@@ -391,15 +396,20 @@ fetch(url, {
 
 ```json
 {
-    "code": 0,
-    "message": "Please make sure the PHP Redis extension is installed and enabled.",
-    "data": {}
+    "code": 1,
+    "message": "",
+    "data": 36002
 }
 ```
 
 ### HTTP Request
 `GET api/group/current/price/{goods_id}`
 
+#### URL Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -------
+    `goods_id` |  required  | int 商品 ID
 
 <!-- END_9bfd1aa1092fc96c4aadc47e16b5e31f -->
 
@@ -410,7 +420,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/my?page=tempora&limit=amet" \
+    -G "http://rumu.top/api/group/my?page=libero&limit=inventore" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -421,8 +431,8 @@ const url = new URL(
 );
 
 let params = {
-    "page": "tempora",
-    "limit": "amet",
+    "page": "libero",
+    "limit": "inventore",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -554,7 +564,7 @@ APIs for managing 往期团购
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/history?page=enim&limit=accusantium" \
+    -G "http://rumu.top/api/group/history?page=nulla&limit=libero" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -565,8 +575,8 @@ const url = new URL(
 );
 
 let params = {
-    "page": "enim",
-    "limit": "accusantium",
+    "page": "nulla",
+    "limit": "libero",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -776,7 +786,7 @@ curl -X POST \
     "http://rumu.top/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"code":"tempora","iv":"id","encryptedData":"quos"}'
+    -d '{"code":"atque","iv":"repudiandae","encryptedData":"necessitatibus"}'
 
 ```
 
@@ -791,9 +801,9 @@ let headers = {
 };
 
 let body = {
-    "code": "tempora",
-    "iv": "id",
-    "encryptedData": "quos"
+    "code": "atque",
+    "iv": "repudiandae",
+    "encryptedData": "necessitatibus"
 }
 
 fetch(url, {

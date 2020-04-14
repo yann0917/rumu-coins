@@ -27,7 +27,7 @@ class GroupController extends BaseController
     public function __construct(
         Request $request,
         Group $group,
-        GroupConfig $groupConfig,User $user
+        GroupConfig $groupConfig, User $user
     )
     {
         parent::__construct($request);
@@ -39,7 +39,9 @@ class GroupController extends BaseController
     /**
      * 获取最近一个小时后开始或者正在进行中的的团购
      *
-     * @queryParam category required string 商品分类
+     * @queryParam   page required string  页码
+     * @queryParam   limit required string  每页展示数量，默认15
+     * @queryParam   category required string 商品分类
      * @responseFile responses/group.get.json
      * @return JsonResponse
      * @throws ApiException
@@ -59,7 +61,7 @@ class GroupController extends BaseController
     /**
      * 获取团购分类
      *
-     * @urlParam group_id  团购 ID，不传则为当前团购的ID
+     * @urlParam     group_id  团购 ID，不传则为当前团购的ID
      * @responseFile responses/category.get.json
      * @param int $group_id
      * @return JsonResponse
@@ -70,15 +72,19 @@ class GroupController extends BaseController
             $config = $this->groupConfig->getLatestGroup();
             $group_id = $config['id'];
         }
-        $category = $this->groupConfig->getGroupCategory($group_id);
+
+        $category = (object)[];
+        if ($group_id) {
+            $category = $this->groupConfig->getGroupCategory($group_id);
+        }
         return $this->success($category);
     }
 
     /**
      * 我参与的团购
      *
-     * @queryParam page 页码 默认 1
-     * @queryParam limit 每页条数 默认15
+     * @queryParam   page 页码 默认 1
+     * @queryParam   limit 每页条数 默认15
      * @responseFile responses/my.group.get.json
      * @return JsonResponse
      */
@@ -89,6 +95,7 @@ class GroupController extends BaseController
         $list = $this->group->userGroup($limit, $user_id);
         return $this->success($list);
     }
+
     /**
      * 参与竞价
      *
@@ -102,9 +109,9 @@ class GroupController extends BaseController
     {
         $params = $this->request->all();
         $validator = Validator::make($params, [
-            'goods_id'=>'required|int|bail',
+            'goods_id' => 'required|int|bail',
             'group_id' => 'required|int|bail',
-            'price' => ['required', 'int', new GoodsPrice($params['goods_id'])]
+            'price' => ['required', 'int', new GoodsPrice($params['goods_id'])],
         ]);
 
         if ($validator->fails()) {
@@ -130,11 +137,19 @@ class GroupController extends BaseController
         }
         $params['user_id'] = $user_id; //TODO:
         $res = $this->group->store($params);
-        return  $this->success($res);
+        return $this->success($res);
     }
 
 
     /**
+     * 获取该商品当前团购价(分)
+     *
+     * @urlParam goods_id  required int 商品 ID
+     * @response {
+     * "code": 1,
+     * "message": "",
+     * "data": 36002
+     * }
      * @param int $goods_id 商品 ID
      * @return JsonResponse
      */

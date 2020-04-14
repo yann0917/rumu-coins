@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "d63df908-4e3f-4f7b-85a3-fb4fd15f13ab",
+        "_postman_id": "d106d5ba-50f9-44ea-8a00-ecb002bf0ba4",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -82,8 +82,20 @@
                             "path": "api\/group",
                             "query": [
                                 {
+                                    "key": "page",
+                                    "value": "mollitia",
+                                    "description": "string  \u9875\u7801",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "perferendis",
+                                    "description": "string  \u6bcf\u9875\u5c55\u793a\u6570\u91cf\uff0c\u9ed8\u8ba415",
+                                    "disabled": false
+                                },
+                                {
                                     "key": "category",
-                                    "value": "architecto",
+                                    "value": "sit",
                                     "description": "string \u5546\u54c1\u5206\u7c7b",
                                     "disabled": false
                                 }
@@ -130,20 +142,28 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"goods_id\": 5,\n    \"group_id\": 11,\n    \"price\": 13\n}"
+                            "raw": "{\n    \"goods_id\": 17,\n    \"group_id\": 7,\n    \"price\": 5\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "api\/group\/current\/price\/{goods_id}",
+                    "name": "\u83b7\u53d6\u8be5\u5546\u54c1\u5f53\u524d\u56e2\u8d2d\u4ef7(\u5206)",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "rumu.top",
                             "path": "api\/group\/current\/price\/:goods_id",
-                            "query": []
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "goods_id",
+                                    "key": "goods_id",
+                                    "value": "eum",
+                                    "description": "int \u5546\u54c1 ID"
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -174,13 +194,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "tempora",
+                                    "value": "libero",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "amet",
+                                    "value": "inventore",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -221,13 +241,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "enim",
+                                    "value": "nulla",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "accusantium",
+                                    "value": "libero",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -342,7 +362,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"code\": \"tempora\",\n    \"iv\": \"id\",\n    \"encryptedData\": \"quos\"\n}"
+                            "raw": "{\n    \"code\": \"atque\",\n    \"iv\": \"repudiandae\",\n    \"encryptedData\": \"necessitatibus\"\n}"
                         },
                         "description": "",
                         "response": []
