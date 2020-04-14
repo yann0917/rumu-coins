@@ -144,7 +144,7 @@ class GroupController extends BaseController
     /**
      * 获取该商品当前团购价(分)
      *
-     * @urlParam goods_id  required int 商品 ID
+     * @urlParam goods_id required int 商品 ID
      * @response {
      * "code": 1,
      * "message": "",
@@ -157,50 +157,5 @@ class GroupController extends BaseController
     {
         $price = $this->group->getCurrentPrice($goods_id);
         return $this->success($price);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int     $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

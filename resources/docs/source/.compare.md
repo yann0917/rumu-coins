@@ -98,14 +98,14 @@ APIs for managing 团购
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/category/at" \
+    -G "http://rumu.top/api/group/category/cupiditate" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://rumu.top/api/group/category/at"
+    "http://rumu.top/api/group/category/cupiditate"
 );
 
 let headers = {
@@ -170,7 +170,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group?page=mollitia&limit=perferendis&category=sit" \
+    -G "http://rumu.top/api/group?page=dolor&limit=ea&category=quia" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -181,9 +181,9 @@ const url = new URL(
 );
 
 let params = {
-    "page": "mollitia",
-    "limit": "perferendis",
-    "category": "sit",
+    "page": "dolor",
+    "limit": "ea",
+    "category": "quia",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -318,7 +318,7 @@ curl -X POST \
     "http://rumu.top/api/group" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"goods_id":17,"group_id":7,"price":5}'
+    -d '{"goods_id":11,"group_id":8,"price":8}'
 
 ```
 
@@ -333,9 +333,9 @@ let headers = {
 };
 
 let body = {
-    "goods_id": 17,
-    "group_id": 7,
-    "price": 5
+    "goods_id": 11,
+    "group_id": 8,
+    "price": 8
 }
 
 fetch(url, {
@@ -368,14 +368,14 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/current/price/eum" \
+    -G "http://rumu.top/api/group/current/price/tempora" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://rumu.top/api/group/current/price/eum"
+    "http://rumu.top/api/group/current/price/tempora"
 );
 
 let headers = {
@@ -420,7 +420,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/my?page=libero&limit=inventore" \
+    -G "http://rumu.top/api/group/my?page=culpa&limit=ut" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -431,8 +431,8 @@ const url = new URL(
 );
 
 let params = {
-    "page": "libero",
-    "limit": "inventore",
+    "page": "culpa",
+    "limit": "ut",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -564,7 +564,7 @@ APIs for managing 往期团购
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/history?page=nulla&limit=libero" \
+    -G "http://rumu.top/api/group/history?page=ea&limit=consequatur" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -575,8 +575,8 @@ const url = new URL(
 );
 
 let params = {
-    "page": "nulla",
-    "limit": "libero",
+    "page": "ea",
+    "limit": "consequatur",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -641,7 +641,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/history/1" \
+    -G "http://rumu.top/api/group/history/1?page=voluptatem&limit=odio&category=perspiciatis" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -650,6 +650,14 @@ curl -X GET \
 const url = new URL(
     "http://rumu.top/api/group/history/1"
 );
+
+let params = {
+    "page": "voluptatem",
+    "limit": "odio",
+    "category": "perspiciatis",
+};
+Object.keys(params)
+    .forEach(key => url.searchParams.append(key, params[key]));
 
 let headers = {
     "Content-Type": "application/json",
@@ -672,44 +680,36 @@ fetch(url, {
     "code": 1,
     "message": "",
     "data": {
-        "id": 1,
-        "issue": 1,
-        "start_at": "2020-04-01 10:01:26",
-        "end_at": "2020-04-02 10:01:35",
-        "goods": [
+        "current_page": 1,
+        "list": [
             {
+                "id": 1,
+                "group_id": 1,
+                "sn": "U9T0069000",
                 "category": "龙钞补号",
-                "goods": [
-                    {
-                        "id": 1,
-                        "group_id": 1,
-                        "sn": "U9T0069000",
-                        "category": "龙钞补号",
-                        "score": " 67E",
-                        "sn_no": "豹子号",
-                        "low_price": 20000,
-                        "top_price": 40000,
-                        "bid": {
-                            "user_id": 1,
-                            "nickname": "赵亚博²º²º",
-                            "price": 20000
-                        }
-                    },
-                    {
-                        "id": 2,
-                        "group_id": 1,
-                        "sn": "U9T0069001",
-                        "category": "龙钞补号",
-                        "score": " 68E",
-                        "sn_no": "豹子号",
-                        "low_price": 20100,
-                        "top_price": 40100,
-                        "bid": []
-                    }
-                ]
+                "score": " 67E",
+                "sn_no": "豹子号",
+                "low_price": 20000,
+                "top_price": 40000,
+                "bid": {
+                    "user_id": 1,
+                    "nickname": "赵亚博²º²º",
+                    "price": 20000
+                }
+            },
+            {
+                "id": 2,
+                "group_id": 1,
+                "sn": "U9T0069001",
+                "category": "龙钞补号",
+                "score": " 68E",
+                "sn_no": "豹子号",
+                "low_price": 20100,
+                "top_price": 40100,
+                "bid": []
             }
         ],
-        "status": 2
+        "total": 21
     }
 }
 ```
@@ -717,6 +717,18 @@ fetch(url, {
 ### HTTP Request
 `GET api/group/history/{history}`
 
+#### URL Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -------
+    `id` |  required  | 团购 ID
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    `page` |  required  | string  页码
+    `limit` |  required  | string  每页展示数量，默认15
+    `category` |  required  | string 商品分类
 
 <!-- END_e8ceda0cc8200028e6aec27ea3437230 -->
 
@@ -786,7 +798,7 @@ curl -X POST \
     "http://rumu.top/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"code":"atque","iv":"repudiandae","encryptedData":"necessitatibus"}'
+    -d '{"code":"ut","iv":"et","encryptedData":"soluta"}'
 
 ```
 
@@ -801,9 +813,9 @@ let headers = {
 };
 
 let body = {
-    "code": "atque",
-    "iv": "repudiandae",
-    "encryptedData": "necessitatibus"
+    "code": "ut",
+    "iv": "et",
+    "encryptedData": "soluta"
 }
 
 fetch(url, {

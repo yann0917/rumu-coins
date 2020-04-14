@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "d106d5ba-50f9-44ea-8a00-ecb002bf0ba4",
+        "_postman_id": "5991d50f-11fc-4fac-ad47-7fa22e4c253e",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -83,19 +83,19 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "mollitia",
+                                    "value": "dolor",
                                     "description": "string  \u9875\u7801",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "perferendis",
+                                    "value": "ea",
                                     "description": "string  \u6bcf\u9875\u5c55\u793a\u6570\u91cf\uff0c\u9ed8\u8ba415",
                                     "disabled": false
                                 },
                                 {
                                     "key": "category",
-                                    "value": "sit",
+                                    "value": "quia",
                                     "description": "string \u5546\u54c1\u5206\u7c7b",
                                     "disabled": false
                                 }
@@ -142,7 +142,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"goods_id\": 17,\n    \"group_id\": 7,\n    \"price\": 5\n}"
+                            "raw": "{\n    \"goods_id\": 11,\n    \"group_id\": 8,\n    \"price\": 8\n}"
                         },
                         "description": "",
                         "response": []
@@ -160,7 +160,7 @@
                                 {
                                     "id": "goods_id",
                                     "key": "goods_id",
-                                    "value": "eum",
+                                    "value": "tempora",
                                     "description": "int \u5546\u54c1 ID"
                                 }
                             ]
@@ -194,13 +194,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "libero",
+                                    "value": "culpa",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "inventore",
+                                    "value": "ut",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -241,13 +241,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "nulla",
+                                    "value": "ea",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "libero",
+                                    "value": "consequatur",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -279,7 +279,26 @@
                             "protocol": "http",
                             "host": "rumu.top",
                             "path": "api\/group\/history\/:history",
-                            "query": []
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "voluptatem",
+                                    "description": "string  \u9875\u7801",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "odio",
+                                    "description": "string  \u6bcf\u9875\u5c55\u793a\u6570\u91cf\uff0c\u9ed8\u8ba415",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "category",
+                                    "value": "perspiciatis",
+                                    "description": "string \u5546\u54c1\u5206\u7c7b",
+                                    "disabled": false
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -362,7 +381,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"code\": \"atque\",\n    \"iv\": \"repudiandae\",\n    \"encryptedData\": \"necessitatibus\"\n}"
+                            "raw": "{\n    \"code\": \"ut\",\n    \"iv\": \"et\",\n    \"encryptedData\": \"soluta\"\n}"
                         },
                         "description": "",
                         "response": []

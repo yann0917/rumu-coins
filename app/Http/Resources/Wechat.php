@@ -16,7 +16,7 @@ class Wechat extends JsonResource
     {
         return [
             'wechat_account' => $this->wechat_account,
-            'qrcode' =>url($this->qrcode),
+            'qrcode' => url('uploads').'/'.$this->qrcode,
         ];
     }
 }

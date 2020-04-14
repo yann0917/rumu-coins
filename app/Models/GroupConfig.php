@@ -25,11 +25,9 @@ class GroupConfig extends BaseModel
 
     public function show(int $group_id)
     {
-        $detail = $this->where('id', $group_id)->with(['goods'])->first();
+        $detail = $this->where('id', $group_id)->first()->toArray();
         if (isset($detail['id'])) {
-            $detail = $detail->toArray();
             $detail['status'] = $this->getGroupStatus($detail['start_at'], $detail['end_at']);
-            $detail['goods'] = $this->goodsSubGroup($detail['goods']);
         }
         return $detail;
     }
@@ -55,7 +53,24 @@ class GroupConfig extends BaseModel
     public function getLatestGroupGoods(int $limit, string $category, int $user_id = 0)
     {
         $config = $this->getLatestGroup();
-        $list = (new GroupCoin())->where([['group_id', '=', $config['id']], ['category', '=', $category]])
+        $list = $this->getGroupGoods($config['id'], $limit, $category);
+        if ($user_id) {
+            $list['joined'] = $this->myJoined($user_id, $config['id']);
+        }
+        return $list;
+    }
+
+    /**
+     * 获取团购商品
+     *
+     * @param int    $group_id
+     * @param int    $limit
+     * @param string $category
+     * @return array
+     */
+    public function getGroupGoods(int $group_id, int $limit, string $category)
+    {
+        $list = (new GroupCoin())->where([['group_id', '=', $group_id], ['category', '=', $category]])
             ->paginate($limit);
         $response = [
             'current_page' => $list->currentPage(),
@@ -66,10 +81,6 @@ class GroupConfig extends BaseModel
         foreach ($response['list'] as &$item) {
             $item['bid'] = $group->getCurrentUser($item['id']) ?? (object)[];
         }
-        if ($user_id) {
-            $response['joined'] = $this->myJoined($user_id, $config['id']);
-        }
-
         return $response;
     }
 
@@ -81,8 +92,7 @@ class GroupConfig extends BaseModel
      */
     public function getGroupCategory(int $group_id = 0)
     {
-        $config = $this->where('id', $group_id)->first()->toArray();
-        $config['status'] = $this->getGroupStatus($config['start_at'], $config['end_at']);
+        $config = $this->show($group_id);
         $config['category'] = (new GroupCoin())->select('category')
             ->where('group_id', $group_id)
             ->groupBy('category')->get();

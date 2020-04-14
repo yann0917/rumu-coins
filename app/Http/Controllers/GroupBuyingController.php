@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ApiException;
+use App\Exceptions\Errors;
 use App\Models\GroupConfig;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -46,72 +48,28 @@ class GroupBuyingController extends BaseController
         return $this->success($response);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * 往期团购详情
      *
+     * @urlParam id required 团购 ID
+     * @queryParam   page required string  页码
+     * @queryParam   limit required string  每页展示数量，默认15
+     * @queryParam   category required string 商品分类
      * @responseFile responses/history.get.json
-     * @param int $id
+     * @param $id
      * @return JsonResponse
+     * @throws ApiException
      */
     public function show($id)
     {
-        $detail = $this->groupConfig->show($id);
+        $limit = $this->request->get('limit', 15);
+        $category = $this->request->get('category', '');
+        if ($category == '') {
+            throw new ApiException(Errors::ERR_PARAM);
+        }
+        $detail = $this->groupConfig->getGroupGoods($id, $limit, $category);
 
         return $this->success($detail);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int     $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
