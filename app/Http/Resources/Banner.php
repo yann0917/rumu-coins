@@ -15,7 +15,7 @@ class Banner extends JsonResource
     public function toArray($request)
     {
         return [
-            'url' => url($this->url),
+            'url' => url('uploads').'/'.$this->url,
             'sort' => $this->sort
         ];
     }
