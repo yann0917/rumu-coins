@@ -10,7 +10,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
-Dotenv::create(dirname(__DIR__, 2))->load();
+Dotenv::create(dirname(__DIR__))->load();
 
 $target = getenv('DEPLOY_TARGET', '');
 $secret = getenv('DEPLOY_SECRET', '');
