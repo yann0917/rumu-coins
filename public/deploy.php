@@ -6,9 +6,13 @@
  * @Last  Modified time: 2020/4/15 11:39
  */
 
-$target = env('DEPLOY_TARGET', '');
-$secret = env('DEPLOY_SECRET', '');
+require __DIR__.'/../vendor/autoload.php';
+use Dotenv\Dotenv;
 
+Dotenv::create(dirname(__DIR__, 2))->load();
+
+$target = getenv('DEPLOY_TARGET', '');
+$secret = getenv('DEPLOY_SECRET', '');
 //获取GitHub发送的内容
 $json = file_get_contents('php://input');
 $content = json_decode($json, true);
