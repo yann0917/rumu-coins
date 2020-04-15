@@ -6,7 +6,8 @@
  * @Last  Modified time: 2020/4/15 11:39
  */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
 use Dotenv\Dotenv;
 
 Dotenv::create(dirname(__DIR__, 2))->load();
