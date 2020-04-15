@@ -8,7 +8,6 @@
 
 $target = env('DEPLOY_TARGET', '');
 $secret = env('DEPLOY_SECRET', '');
-
 //获取GitHub发送的内容
 $json = file_get_contents('php://input');
 $content = json_decode($json, true);
