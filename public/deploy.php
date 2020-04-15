@@ -24,6 +24,7 @@ if (!$signature) {
     return http_response_code(404);
 }
 [$algo, $hash] = explode('=', $signature, 2);
+
 //计算签名
 $payloadHash = hash_hmac($algo, $json, $secret);
 // 判断签名是否匹配
