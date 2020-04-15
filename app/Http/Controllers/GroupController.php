@@ -169,7 +169,6 @@ class GroupController extends BaseController
         $ids = explode(',', $params['ids']);
         $goods = new GroupCoin();
         $top_prices = $goods->getTopPrice($ids);
-        // 是否被别人封顶
         $exist = false;
         foreach ($top_prices as $key => $price) {
             $exist = $this->group->where([
