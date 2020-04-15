@@ -14,6 +14,7 @@ Dotenv::createImmutable(dirname(__DIR__))->load();
 
 $target = getenv('DEPLOY_TARGET', '');
 $secret = getenv('DEPLOY_SECRET', '');
+
 //获取GitHub发送的内容
 $json = file_get_contents('php://input');
 $content = json_decode($json, true);
@@ -23,6 +24,7 @@ if (!$signature) {
     return http_response_code(404);
 }
 [$algo, $hash] = explode('=', $signature, 2);
+
 //计算签名
 $payloadHash = hash_hmac($algo, $json, $secret);
 // 判断签名是否匹配
