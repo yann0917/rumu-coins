@@ -14,6 +14,7 @@ Dotenv::createImmutable(dirname(__DIR__))->load();
 
 $target = getenv('DEPLOY_TARGET', '');
 $secret = getenv('DEPLOY_SECRET', '');
+
 //获取GitHub发送的内容
 $json = file_get_contents('php://input');
 $content = json_decode($json, true);
