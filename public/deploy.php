@@ -18,7 +18,6 @@ $secret = getenv('DEPLOY_SECRET', '');
 //获取GitHub发送的内容
 $json = file_get_contents('php://input');
 $content = json_decode($json, true);
-
 //github发送过来的签名
 $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
 if (!$signature) {
