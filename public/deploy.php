@@ -12,6 +12,7 @@ use Dotenv\Dotenv;
 
 Dotenv::create(dirname(__DIR__))->load();
 
+
 $target = getenv('DEPLOY_TARGET', '');
 $secret = getenv('DEPLOY_SECRET', '');
 //获取GitHub发送的内容
