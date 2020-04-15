@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Exceptions\ApiException;
 use App\Exceptions\Errors;
 use App\Models\Group;
+use App\Models\GroupCoin;
 use App\Models\GroupConfig;
 use App\Models\User;
 use App\Rules\GoodsPrice;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,6 +23,7 @@ class GroupController extends BaseController
     public $group;
     public $groupConfig;
     public $user;
+    public $goods;
 
     public function __construct(
         Request $request,
@@ -34,7 +35,7 @@ class GroupController extends BaseController
         $this->group = $group;
         $this->groupConfig = $groupConfig;
         $this->user = $user;
-        $this->middleware('jwt.auth', ['except' => ['index']]);
+        $this->middleware('jwt.auth', ['except' => ['index', 'category']]);
     }
 
     /**
@@ -126,19 +127,71 @@ class GroupController extends BaseController
             }
             throw new ApiException(Errors::ERR_PARAM, $errMsg);
         }
-        $user_id = $this->user_id;
-        $user = $this->user->where('id', $user_id)->first();
-        if ($user->status == 0) {
+        if ($this->userHasBlock()) {
             throw new ApiException(Errors::ERR_USER_BLOCK);
         }
-
         $currentPrice = $this->group->getCurrentPrice($params['goods_id']);
         if ($params['price'] <= $currentPrice) {
             throw new ApiException(Errors::ERR_GROUP_BID_FAILED);
         }
-        $params['user_id'] = $user_id; //TODO:
+        $params['user_id'] = $this->user_id;
         $res = $this->group->store($params);
         return $this->success($res);
+    }
+
+    /**
+     * 封顶
+     *
+     * @bodyParam ids string required 多个商品ID,逗号拼接的字符串
+     * @bodyParam group_id int required 团购 ID
+     * @response {
+     * "code": 1,
+     * "message": "",
+     * "data": 1
+     * }
+     * @return JsonResponse
+     * @throws ApiException
+     */
+    public function cap()
+    {
+        $params = $this->request->all();
+        $validator = Validator::make($params, [
+            'ids' => 'required|string|bail',
+            'group_id' => 'required|int|bail',
+        ]);
+        if ($validator->fails()) {
+            // $errs = $validator->errors()->getMessages();
+            throw new ApiException(Errors::ERR_PARAM);
+        }
+        $ids = explode(',', $params['ids']);
+        if (count($ids) < 5) {
+            throw new ApiException(Errors::ERR_GROUP_NUM_NOT_ENOUGH);
+        }
+        if ($this->userHasBlock()) {
+            throw new ApiException(Errors::ERR_USER_BLOCK);
+        }
+        $goods = new GroupCoin();
+        $top_prices = $goods->getTopPrice($ids);
+
+        foreach ($top_prices as $key => $price) {
+            $data = [
+                'user_id' => $this->user_id,
+                'group_id' => $params['group_id'],
+                'goods_id' => $key,
+                'price' => $price,
+            ];
+            $this->group->store($data);
+        }
+        return $this->success(1);
+    }
+
+    protected function userHasBlock()
+    {
+        $user = $this->user->where('id', $this->user_id)->first();
+        if ($user->status == 0) {
+            return true;
+        }
+        return false;
     }
 
 

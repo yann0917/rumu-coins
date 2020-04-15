@@ -112,12 +112,12 @@ fetch(url, {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://rumu.top/api/group/category/quia" \
+    -G "http://rumu.top/api/group/category/delectus" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://rumu.top/api/group/category/quia"
+    "http://rumu.top/api/group/category/delectus"
 );
 
 let headers = {
@@ -186,7 +186,7 @@ fetch(url, {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://rumu.top/api/group?page=quis&amp;limit=dolorem&amp;category=dolores" \
+    -G "http://rumu.top/api/group?page=magnam&amp;limit=aut&amp;category=alias" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"</code></pre>
@@ -195,9 +195,9 @@ fetch(url, {
 );
 
 let params = {
-    "page": "quis",
-    "limit": "dolorem",
-    "category": "dolores",
+    "page": "magnam",
+    "limit": "aut",
+    "category": "alias",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -345,7 +345,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}" \
-    -d '{"goods_id":15,"group_id":17,"price":16}'
+    -d '{"goods_id":12,"group_id":17,"price":13}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://rumu.top/api/group"
@@ -358,9 +358,9 @@ let headers = {
 };
 
 let body = {
-    "goods_id": 15,
+    "goods_id": 12,
     "group_id": 17,
-    "price": 16
+    "price": 13
 }
 
 fetch(url, {
@@ -404,6 +404,76 @@ fetch(url, {
 </tbody>
 </table>
 <!-- END_574eb03c7487fd3b774a8fdd1b988fc9 -->
+<!-- START_f120d84fd4d82f13af76c28465a0d946 -->
+<h2>封顶</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://rumu.top/api/group/cap" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"ids":"nihil","group_id":6}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://rumu.top/api/group/cap"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+let body = {
+    "ids": "nihil",
+    "group_id": 6
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "code": 1,
+    "message": "",
+    "data": 1
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/group/cap</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ids</code></td>
+<td>string</td>
+<td>required</td>
+<td>多个商品ID,逗号拼接的字符串</td>
+</tr>
+<tr>
+<td><code>group_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>团购 ID</td>
+</tr>
+</tbody>
+</table>
+<!-- END_f120d84fd4d82f13af76c28465a0d946 -->
 <!-- START_9bfd1aa1092fc96c4aadc47e16b5e31f -->
 <h2>获取该商品当前团购价(分)</h2>
 <blockquote>
@@ -464,7 +534,7 @@ fetch(url, {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://rumu.top/api/group/my?page=libero&amp;limit=et" \
+    -G "http://rumu.top/api/group/my?page=quibusdam&amp;limit=quia" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"</code></pre>
@@ -473,8 +543,8 @@ fetch(url, {
 );
 
 let params = {
-    "page": "libero",
-    "limit": "et",
+    "page": "quibusdam",
+    "limit": "quia",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -612,7 +682,7 @@ fetch(url, {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://rumu.top/api/group/history?page=dolores&amp;limit=dolorem" \
+    -G "http://rumu.top/api/group/history?page=culpa&amp;limit=similique" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"</code></pre>
@@ -621,8 +691,8 @@ fetch(url, {
 );
 
 let params = {
-    "page": "dolores",
-    "limit": "dolorem",
+    "page": "culpa",
+    "limit": "similique",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -695,7 +765,7 @@ fetch(url, {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://rumu.top/api/group/history/1?page=totam&amp;limit=est&amp;category=quia" \
+    -G "http://rumu.top/api/group/history/1?page=repellendus&amp;limit=quia&amp;category=animi" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"</code></pre>
@@ -704,9 +774,9 @@ fetch(url, {
 );
 
 let params = {
-    "page": "totam",
-    "limit": "est",
-    "category": "quia",
+    "page": "repellendus",
+    "limit": "quia",
+    "category": "animi",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -863,7 +933,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}" \
-    -d '{"code":"mollitia","iv":"est","encryptedData":"nesciunt"}'
+    -d '{"code":"ipsa","iv":"enim","encryptedData":"occaecati"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://rumu.top/api/auth/login"
@@ -876,9 +946,9 @@ let headers = {
 };
 
 let body = {
-    "code": "mollitia",
-    "iv": "est",
-    "encryptedData": "nesciunt"
+    "code": "ipsa",
+    "iv": "enim",
+    "encryptedData": "occaecati"
 }
 
 fetch(url, {

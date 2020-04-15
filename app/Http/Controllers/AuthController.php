@@ -63,21 +63,9 @@ class AuthController extends BaseController
         }
 
         if (!$token = auth('api')->fromUser($userInfo)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            throw new ApiException(Errors::ERR_INVALID_TOKEN, 'Unauthorized');
         }
 
-        return $this->success($this->respondWithToken($token));
-    }
-
-    public function guest()
-    {
-        $userInfo = new User();
-        $userInfo->id = -1;
-        $userInfo->avatar = "";
-        $userInfo->nickname = "游客";
-        if (!$token = auth('api')->fromUser($userInfo)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
         return $this->success($this->respondWithToken($token));
     }
 
@@ -137,12 +125,6 @@ class AuthController extends BaseController
         if (!$request->code) {
             throw new ApiException(Errors::ERR_PARAM);
         }
-
-        // if (PHP_SAPI == "cli") {
-        //     $miniapp = $this->wechat['miniapp'];
-        // } else {
-        //     $miniapp = $this->miniapp;
-        // }
 
         $userInfo = $this->miniapp->auth->session($request->code);
 

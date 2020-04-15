@@ -100,7 +100,7 @@ APIs for managing 团购
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/category/quia" \
+    -G "http://rumu.top/api/group/category/delectus" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"
@@ -108,7 +108,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://rumu.top/api/group/category/quia"
+    "http://rumu.top/api/group/category/delectus"
 );
 
 let headers = {
@@ -174,7 +174,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group?page=quis&limit=dolorem&category=dolores" \
+    -G "http://rumu.top/api/group?page=magnam&limit=aut&category=alias" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"
@@ -186,9 +186,9 @@ const url = new URL(
 );
 
 let params = {
-    "page": "quis",
-    "limit": "dolorem",
-    "category": "dolores",
+    "page": "magnam",
+    "limit": "aut",
+    "category": "alias",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -325,7 +325,7 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}" \
-    -d '{"goods_id":15,"group_id":17,"price":16}'
+    -d '{"goods_id":12,"group_id":17,"price":13}'
 
 ```
 
@@ -341,9 +341,9 @@ let headers = {
 };
 
 let body = {
-    "goods_id": 15,
+    "goods_id": 12,
     "group_id": 17,
-    "price": 16
+    "price": 13
 }
 
 fetch(url, {
@@ -368,6 +368,68 @@ Parameter | Type | Status | Description
         `price` | integer |  required  | 出价（分）
     
 <!-- END_574eb03c7487fd3b774a8fdd1b988fc9 -->
+
+<!-- START_f120d84fd4d82f13af76c28465a0d946 -->
+## 封顶
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://rumu.top/api/group/cap" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"ids":"nihil","group_id":6}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://rumu.top/api/group/cap"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+let body = {
+    "ids": "nihil",
+    "group_id": 6
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "code": 1,
+    "message": "",
+    "data": 1
+}
+```
+
+### HTTP Request
+`POST api/group/cap`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `ids` | string |  required  | 多个商品ID,逗号拼接的字符串
+        `group_id` | integer |  required  | 团购 ID
+    
+<!-- END_f120d84fd4d82f13af76c28465a0d946 -->
 
 <!-- START_9bfd1aa1092fc96c4aadc47e16b5e31f -->
 ## 获取该商品当前团购价(分)
@@ -430,7 +492,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/my?page=libero&limit=et" \
+    -G "http://rumu.top/api/group/my?page=quibusdam&limit=quia" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"
@@ -442,8 +504,8 @@ const url = new URL(
 );
 
 let params = {
-    "page": "libero",
-    "limit": "et",
+    "page": "quibusdam",
+    "limit": "quia",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -576,7 +638,7 @@ APIs for managing 往期团购
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/history?page=dolores&limit=dolorem" \
+    -G "http://rumu.top/api/group/history?page=culpa&limit=similique" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"
@@ -588,8 +650,8 @@ const url = new URL(
 );
 
 let params = {
-    "page": "dolores",
-    "limit": "dolorem",
+    "page": "culpa",
+    "limit": "similique",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -655,7 +717,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X GET \
-    -G "http://rumu.top/api/group/history/1?page=totam&limit=est&category=quia" \
+    -G "http://rumu.top/api/group/history/1?page=repellendus&limit=quia&category=animi" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}"
@@ -667,9 +729,9 @@ const url = new URL(
 );
 
 let params = {
-    "page": "totam",
-    "limit": "est",
-    "category": "quia",
+    "page": "repellendus",
+    "limit": "quia",
+    "category": "animi",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -817,7 +879,7 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}" \
-    -d '{"code":"mollitia","iv":"est","encryptedData":"nesciunt"}'
+    -d '{"code":"ipsa","iv":"enim","encryptedData":"occaecati"}'
 
 ```
 
@@ -833,9 +895,9 @@ let headers = {
 };
 
 let body = {
-    "code": "mollitia",
-    "iv": "est",
-    "encryptedData": "nesciunt"
+    "code": "ipsa",
+    "iv": "enim",
+    "encryptedData": "occaecati"
 }
 
 fetch(url, {

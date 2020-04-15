@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,20 +45,24 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  Request   $request
-     * @param  Throwable $exception
+     * @param Request   $request
+     * @param Throwable $exception
      * @return Response
      * @throws Throwable
      */
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof \HttpException) {
-            return  \response()->make('', $exception->getCode());
+            return \response()->make('', $exception->getCode());
         }
-        if ($exception )
-        $response['code'] = $exception->getCode();
+
+        if ($exception instanceof UnauthorizedHttpException) {
+            $response['code'] = Errors::ERR_INVALID_TOKEN;
+        } else {
+            $response['code'] = $exception->getCode();
+        }
         $response['message'] = $exception->getMessage() ?? $exception->getCode();
-        $response['data'] = (object) [];
+        $response['data'] = (object)[];
         return \response()->json($response, 200, [], JSON_UNESCAPED_UNICODE);
         // return parent::render($request, $exception);
     }
