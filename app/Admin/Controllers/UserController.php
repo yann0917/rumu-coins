@@ -20,21 +20,31 @@ class UserController extends AdminController
         return Grid::make(new User(), function (Grid $grid) {
 
             $grid->disableCreateButton();
-            $grid->actions(function (Grid\Displayers\Actions $actions) {
-                $actions->disableDelete();
-                // $actions->disableEdit();
-                $actions->disableView();
-            });
+            $grid->disableActions();
+            // $grid->actions(function (Grid\Displayers\Actions $actions) {
+            //     $actions->disableDelete();
+            //     // $actions->disableEdit();
+            //     $actions->disableView();
+            // });
             $grid->id->sortable();
             // $grid->email;
             // $grid->email_verified_at;
             // $grid->name;
             // $grid->password;
             // $grid->remember_token;
-            $grid->nickname->label();
+            $grid->nickname;
             $grid->avatar->image();
-            $grid->status->using([ 0 => '已拉黑', 1 => '正常用户']);
-            // $grid->status->switch();
+            // $grid->status->using([ 0 => '已拉黑', 1 => '正常用户'])->label(
+            //     [
+            //         0 => 'danger',
+            //         1 => 'success'
+            //     ]
+            // );
+            $grid->status->switch()->help('开关关闭表示已拉黑');
+            $grid->sex->using([ 0 => '女', 1 => '男']);
+            $grid->country;
+            $grid->province;
+            $grid->city;
             // $grid->created_at;
             // $grid->updated_at->sortable();
 
@@ -96,7 +106,7 @@ class UserController extends AdminController
             // $form->text('remember_token');
             // $form->image('avatar');
             $form->display('nickname');
-            $form->switch('status', '正常用户?');
+            $form->switch('status', '正常用户');
             // $form->display('created_at');
             // $form->display('updated_at');
         });
