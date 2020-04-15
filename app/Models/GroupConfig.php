@@ -54,7 +54,7 @@ class GroupConfig extends BaseModel
     {
         $config = $this->getLatestGroup();
         $list = $this->getGroupGoods($config['id'], $limit, $category);
-        if ($user_id) {
+        if ($user_id > 0 ) {
             $list['joined'] = $this->myJoined($user_id, $config['id']);
         }
         return $list;

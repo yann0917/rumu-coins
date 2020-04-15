@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "5991d50f-11fc-4fac-ad47-7fa22e4c253e",
+        "_postman_id": "79b75d15-672f-442c-8f81-ce4babc74abe",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -29,6 +29,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -63,6 +67,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -83,19 +91,19 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "dolor",
+                                    "value": "magnam",
                                     "description": "string  \u9875\u7801",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "ea",
+                                    "value": "aut",
                                     "description": "string  \u6bcf\u9875\u5c55\u793a\u6570\u91cf\uff0c\u9ed8\u8ba415",
                                     "disabled": false
                                 },
                                 {
                                     "key": "category",
-                                    "value": "quia",
+                                    "value": "alias",
                                     "description": "string \u5546\u54c1\u5206\u7c7b",
                                     "disabled": false
                                 }
@@ -110,6 +118,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -138,11 +150,47 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"goods_id\": 11,\n    \"group_id\": 8,\n    \"price\": 8\n}"
+                            "raw": "{\n    \"goods_id\": 12,\n    \"group_id\": 17,\n    \"price\": 13\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "\u5c01\u9876",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "rumu.top",
+                            "path": "api\/group\/cap",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"ids\": \"nihil\",\n    \"group_id\": 6\n}"
                         },
                         "description": "",
                         "response": []
@@ -160,7 +208,7 @@
                                 {
                                     "id": "goods_id",
                                     "key": "goods_id",
-                                    "value": "tempora",
+                                    "value": "eum",
                                     "description": "int \u5546\u54c1 ID"
                                 }
                             ]
@@ -174,6 +222,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -194,13 +246,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "culpa",
+                                    "value": "quibusdam",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "ut",
+                                    "value": "quia",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -215,6 +267,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -241,13 +297,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "ea",
+                                    "value": "culpa",
                                     "description": "\u9875\u7801 \u9ed8\u8ba4 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "consequatur",
+                                    "value": "similique",
                                     "description": "\u6bcf\u9875\u6761\u6570 \u9ed8\u8ba415",
                                     "disabled": false
                                 }
@@ -262,6 +318,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -282,19 +342,19 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "voluptatem",
+                                    "value": "repellendus",
                                     "description": "string  \u9875\u7801",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limit",
-                                    "value": "odio",
+                                    "value": "quia",
                                     "description": "string  \u6bcf\u9875\u5c55\u793a\u6570\u91cf\uff0c\u9ed8\u8ba415",
                                     "disabled": false
                                 },
                                 {
                                     "key": "category",
-                                    "value": "perspiciatis",
+                                    "value": "animi",
                                     "description": "string \u5546\u54c1\u5206\u7c7b",
                                     "disabled": false
                                 }
@@ -309,6 +369,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -343,6 +407,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -377,11 +445,15 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"code\": \"ut\",\n    \"iv\": \"et\",\n    \"encryptedData\": \"soluta\"\n}"
+                            "raw": "{\n    \"code\": \"ipsa\",\n    \"iv\": \"enim\",\n    \"encryptedData\": \"occaecati\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -405,6 +477,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {
@@ -433,6 +509,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
                             }
                         ],
                         "body": {

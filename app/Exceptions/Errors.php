@@ -35,7 +35,7 @@ class Errors
 
     const  ERR_USER_NO_EXIST = 10001;
     const ERR_GROUP_BID_FAILED= 10002;
-    const ERR_GROUP_NUM_NOT_ENOUGH = 1003;
+    const ERR_GROUP_NUM_NOT_ENOUGH = 10003;
     const ERR_USER_BLOCK = 10004;
 
     public static $ERR_MSG_BASE = [

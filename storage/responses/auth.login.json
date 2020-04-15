@@ -1,0 +1,9 @@
+{
+    "code": 1,
+    "message": "",
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ydW11LnRvcFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU4Njg3NjQ4NCwiZXhwIjoxNTg2OTYyODg0LCJuYmYiOjE1ODY4NzY0ODQsImp0aSI6Imk3dFdSWk9QbWVBTEJTOWsiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.-T8ngtx8mJnTsM4ZhklkWWzwe0ronA7yW1V-nWTCNIc",
+        "token_type": "bearer",
+        "expires_in": 86400
+    }
+}
