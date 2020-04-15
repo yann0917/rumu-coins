@@ -163,16 +163,27 @@ class GroupController extends BaseController
             // $errs = $validator->errors()->getMessages();
             throw new ApiException(Errors::ERR_PARAM);
         }
-        $ids = explode(',', $params['ids']);
-        if (count($ids) < 5) {
-            throw new ApiException(Errors::ERR_GROUP_NUM_NOT_ENOUGH);
-        }
         if ($this->userHasBlock()) {
             throw new ApiException(Errors::ERR_USER_BLOCK);
         }
+        $ids = explode(',', $params['ids']);
         $goods = new GroupCoin();
         $top_prices = $goods->getTopPrice($ids);
+        // 是否被别人封顶
+        $exist = false;
+        foreach ($top_prices as $key => $price) {
+            $exist = $this->group->where([
+                ['group_id', '=', $params['group_id']],
+                ['goods_id', '=', $key],
+                ['price', '=', $price],['user_id', '!=', $this->user_id]])->exists();
+            if ($exist) {
+                break;
+            }
+        }
 
+        if ($exist && count($ids) < 5) {
+            throw new ApiException(Errors::ERR_GROUP_NUM_NOT_ENOUGH);
+        }
         foreach ($top_prices as $key => $price) {
             $data = [
                 'user_id' => $this->user_id,
