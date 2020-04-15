@@ -10,8 +10,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
-Dotenv::create(dirname(__DIR__))->load();
-
+Dotenv::createImmutable(dirname(__DIR__))->load();
 
 $target = getenv('DEPLOY_TARGET', '');
 $secret = getenv('DEPLOY_SECRET', '');
