@@ -67,7 +67,10 @@ class GroupController extends AdminController
                 return "<img src=".$this->user['avatar'] ;
             });
             $grid->column('price', '出价金额')->display(function () {
-                return $this->price * 0.01 ;
+                $price = $this->price * 0.01;
+                return  $this->goods['top_price'] * 0.01 == $price
+                    ? "<p class='badge badge-success'>{$price}</p>"
+                    : $price ;
             })->help('人民币元');
 
             $grid->filter(function (Grid\Filter $filter) {
