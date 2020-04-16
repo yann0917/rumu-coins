@@ -39,6 +39,7 @@ class Group extends BaseModel
         $config = new GroupConfig();
         foreach ($response['list'] as &$item) {
             $group_status = $config->getGroupStatus($item->config->start_at, $item->config->end_at);
+            // 0-竞价中,1-成功,2-失败
             $item->bid_status = 0;
             if ($group_status == 1) {
                 $item->bid_status = 0;
