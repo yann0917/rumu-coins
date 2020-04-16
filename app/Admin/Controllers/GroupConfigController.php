@@ -20,7 +20,7 @@ class GroupConfigController extends AdminController
     protected function grid()
     {
         return Grid::make(new GroupConfig(), function (Grid $grid) {
-            $grid->model()->with('goods');
+            $grid->model()->with('goods')->orderBy('id', 'desc');
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 if ( time() >= strtotime($this->start_at) && time() < strtotime($this->end_at)) {
                     // 进行中
