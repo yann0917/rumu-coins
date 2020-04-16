@@ -312,9 +312,14 @@ return [
     | This value is the layout of admin pages.
     */
     'layout' => [
+        // Support indigo, blue, blue-light
+        'color' => 'indigo',
+
         'body_class' => '',
 
         'sidebar_collapsed' => false,
+
+        'sidebar_dark' => false,
 
         // bg-primary, bg-info, bg-warning, bg-success, bg-danger, bg-dark
         'navbar_color' => '',
