@@ -66,7 +66,7 @@ class GroupConfigController extends AdminController
             // $grid->updated_at->sortable();
             // 展示商品数量
             $grid->column('团购明细')->display(function () {
-                return "<a href=".admin_url('group') . '?group_id=' . $this->issue .">查看明细" ."</a>";
+                return "<a href=".admin_url('group') . '?group_id=' . $this->id .">查看明细" ."</a>";
             });
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
@@ -169,17 +169,17 @@ class GroupConfigController extends AdminController
     {
         return Form::make(new GroupConfig(), function (Form $form) {
             $form->display('id');
-            $form->number('issue')->required()->attribute('min', 1);
+            $form->number('issue')->required()->attribute('min', 1)->width(4);
             $form->datetime('start_at')
                 ->format('YYYY-MM-DD HH:mm:ss')
                 ->rules('required|date|after:10minute ', [
                     'after' => ':attribute必须大于 10 分钟之后',
-                ]);
+                ])->width(4);
             $form->datetime('end_at')
                 ->format('YYYY-MM-DD HH:mm:ss')
                 ->rules('required|date|after:start_at', [
                     'after' => ':attribute必须大于开始时间',
-                ]);
+                ])->width(4);
 
             // $form->display('created_at');
             // $form->display('updated_at');
