@@ -18,22 +18,12 @@ class UserController extends AdminController
     protected function grid()
     {
         return Grid::make(new User(), function (Grid $grid) {
-
             $grid->disableCreateButton();
             $grid->disableActions();
-            // $grid->actions(function (Grid\Displayers\Actions $actions) {
-            //     $actions->disableDelete();
-            //     // $actions->disableEdit();
-            //     $actions->disableView();
-            // });
+
             $grid->id->sortable();
-            // $grid->email;
-            // $grid->email_verified_at;
-            // $grid->name;
-            // $grid->password;
-            // $grid->remember_token;
             $grid->nickname;
-            $grid->avatar->image();
+            $grid->avatar->image(url(), 32, 32);
             // $grid->status->using([ 0 => '已拉黑', 1 => '正常用户'])->label(
             //     [
             //         0 => 'danger',
@@ -48,7 +38,7 @@ class UserController extends AdminController
             // $grid->created_at;
             // $grid->updated_at->sortable();
 
-            $grid->filter(function (Grid\Filter $filter){
+            $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
                 $filter->like('nickname');
             });

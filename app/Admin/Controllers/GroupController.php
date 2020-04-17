@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Extensions\Tools\GroupExport AS GroupExportTools;
+use App\Admin\Extensions\Tools\GroupExport as GroupExportTools;
 use App\Admin\Repositories\Group;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
@@ -25,10 +25,7 @@ class GroupController extends AdminController
         return Grid::make(new Group(), function (Grid $grid) use ($group_id) {
             $grid->disableCreateButton();
 
-            $grid->disableDeleteButton();
-            $grid->disableEditButton();
-            $grid->disableQuickEditButton();
-            $grid->disableViewButton();
+            $grid->disableActions();
             // $grid->actions(function (Grid\Displayers\Actions $actions) {
             //     // 当前行的数据数组
             //     $rowArray = $actions->row->toArray();
@@ -64,8 +61,8 @@ class GroupController extends AdminController
                 return $this->user['nickname'];
             });
             $grid->column('avatar', '出价人头像')->display(function () {
-                return "<img src=".$this->user['avatar'] ;
-            });
+                return $this->user['avatar'] ;
+            })->image(url(), 32, 32);
             $grid->column('price', '出价金额')->display(function () {
                 $price = $this->price * 0.01;
                 return  $this->goods['top_price'] * 0.01 == $price

@@ -10,6 +10,7 @@ return [
         'end_at' => '结束时间',
         'goods_nums' => '商品总数',
         'status' => '状态',
+        'coins' => '钱币列表',
     ],
     'options' => [
     ],
