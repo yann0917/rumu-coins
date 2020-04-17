@@ -141,9 +141,9 @@ class GroupConfigController extends AdminController
                     $grid->id->sortable();
                     // $grid->group_id;
                     $grid->sn('号码')->sortable();
-                    $grid->category('分类');
+                    $grid->category('分类')->sortable();
                     $grid->score('分数')->sortable();
-                    $grid->sn_no('证书号');
+                    $grid->sn_no('证书号')->sortable();
                     $grid->low_price('起步价')->display(function ($low_price) {
                         return $low_price * 0.01;
                     })->help('人民币元');
@@ -151,7 +151,7 @@ class GroupConfigController extends AdminController
                         return $top_price * 0.01;
                     })->help('人民币元');
 
-                    $grid->created_at;
+                    // $grid->created_at;
                     // $grid->updated_at->sortable();
                     // $grid->filter(function (Grid\Filter $filter) {
                     //     $filter->equal('id');

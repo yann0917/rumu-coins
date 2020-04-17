@@ -60,7 +60,7 @@ class BannerController extends AdminController
             $form->display('id');
             $form->image('url')->uniqueName();
             $form->text('sort');
-            $form->switch('status', '上架?');
+            $form->switch('status', '上架');
             // $form->display('created_at');
             // $form->display('updated_at');
         });
