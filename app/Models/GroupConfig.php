@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Cache;
 
 class GroupConfig extends BaseModel
 {
@@ -32,6 +33,26 @@ class GroupConfig extends BaseModel
         return $detail;
     }
 
+    public function historyList(int $page, int $limit)
+    {
+        $cache_key = 'group:history:'. $page .':'. $limit;
+        $cache =  Cache::get($cache_key);
+        if ($cache) {
+            return $cache;
+        }
+        $list = $this->where('end_at', '<=', date('Y-m-d H:i:d'))
+            ->orderBy('issue', 'desc')
+            ->paginate($limit);
+        $response = [
+            'current_page' => $list->currentPage(),
+            'list' =>  $list->items(),
+            'total' => $list->total()
+        ];
+        Cache::put($cache_key, $response, 300);
+
+        return $response;
+    }
+
     /**
      * 获取最近一个小时后开始或者正在进行中的的团购
      *
@@ -39,6 +60,11 @@ class GroupConfig extends BaseModel
      */
     public function getLatestGroup()
     {
+        $cache = Cache::get('group:latest');
+        if ($cache) {
+            $cache['status'] = $this->getGroupStatus($cache['start_at'], $cache['end_at']);
+            return  $cache;
+        }
         $now = date('Y-m-d H:i:s');
         $detail = $this->where([['start_at', '<=', $now], ['end_at', '>', $now]])
             ->orWhere([['start_at', '>=', $now], ['start_at', '<=', date('Y-m-d H:i:s', strtotime('+1 Hour'))]])
@@ -46,6 +72,8 @@ class GroupConfig extends BaseModel
         if (isset($detail['id'])) {
             $detail = $detail->toArray();
             $detail['status'] = $this->getGroupStatus($detail['start_at'], $detail['end_at']);
+            $ttl = strtotime($detail['end_at']) - time();
+            Cache::put('group:latest', $detail, $ttl);
         }
         return $detail;
     }
@@ -92,10 +120,17 @@ class GroupConfig extends BaseModel
      */
     public function getGroupCategory(int $group_id = 0)
     {
+        $cache_key = 'group:category:'. $group_id;
+        $cache = Cache::get($cache_key);
+        if ($cache) {
+            $cache['status'] = $this->getGroupStatus($cache['start_at'], $cache['end_at']);
+            return $cache;
+        }
         $config = $this->show($group_id);
         $config['category'] = (new GroupCoin())->select('category')
             ->where('group_id', $group_id)
-            ->groupBy('category')->get();
+            ->groupBy('category')->get()->toArray();
+        Cache::put($cache_key, $config, $this->ttl);
         return $config;
     }
 
@@ -128,29 +163,5 @@ class GroupConfig extends BaseModel
             $status = 0;
         }
         return $status;
-    }
-
-    /**
-     * 商品按类型组合数据
-     *
-     * @param array $goods
-     * @return array
-     */
-    public function goodsSubGroup(array $goods): array
-    {
-        $group = new Group();
-        $temp_category = [];
-        $temp = [];
-        foreach ($goods as $key => $item) {
-            $temp_category[$item['category']][] = $item;
-        }
-        foreach ($temp_category as $key => &$item) {
-            $temp[$key]['category'] = $key;
-            foreach ($item as &$item2) {
-                $item2['bid'] = $group->getCurrentUser($item2['id']) ?? (object)[];
-            }
-            $temp[$key]['goods'] = $item;
-        }
-        return array_values($temp);
     }
 }

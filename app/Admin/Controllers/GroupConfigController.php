@@ -9,6 +9,8 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Controllers\AdminController;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 class GroupConfigController extends AdminController
 {
@@ -47,7 +49,6 @@ class GroupConfigController extends AdminController
             });
 
             $grid->column('status')->display(function () {
-                $status = 0;
                 if ( time() >= strtotime($this->start_at) && time() < strtotime($this->end_at)) {
                     $status = 1;
                 } elseif (time() >= strtotime($this->end_at) && time() >= strtotime($this->start_at)) {
@@ -184,5 +185,27 @@ class GroupConfigController extends AdminController
             // $form->display('created_at');
             // $form->display('updated_at');
         });
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return mixed
+     */
+    public function store()
+    {
+        Cache::forget('group:latest');
+        return $this->form()->store();
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id)
+    {
+        Cache::forget('group:latest');
+        return $this->form()->update($id);
     }
 }

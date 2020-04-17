@@ -17,7 +17,8 @@ class BaseModel extends Model
 {
     use SoftDeletes;
     use HasDateTimeFormatter;
-
+    protected $ttl = 86400;
     protected $guarded = ['id'];
     protected $hidden = ['created_at', 'updated_at', 'deleted_at', 'extra'];
+
 }
