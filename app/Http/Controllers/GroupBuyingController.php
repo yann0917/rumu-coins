@@ -34,16 +34,9 @@ class GroupBuyingController extends BaseController
      */
     public function index()
     {
+        $page = $this->request->get('page', 1);
         $limit = $this->request->get('limit', 15);
-        $list = $this->groupConfig
-            ->where('end_at', '<=', date('Y-m-d H:i:d'))
-            ->orderBy('issue', 'desc')
-            ->paginate($limit);
-        $response = [
-            'current_page' => $list->currentPage(),
-            'list' =>  $list->items(),
-            'total' => $list->total()
-        ];
+        $response = $this->groupConfig->historyList($page, $limit);
         return $this->success($response);
     }
 
