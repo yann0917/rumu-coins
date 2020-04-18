@@ -23,7 +23,7 @@ class UserController extends AdminController
 
             $grid->id->sortable();
             $grid->nickname;
-            $grid->avatar->image(url(), 32, 32);
+            $grid->avatar->image(url(), 48, 48);
             // $grid->status->using([ 0 => '已拉黑', 1 => '正常用户'])->label(
             //     [
             //         0 => 'danger',

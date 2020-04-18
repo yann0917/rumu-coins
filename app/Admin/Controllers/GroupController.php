@@ -62,7 +62,7 @@ class GroupController extends AdminController
             });
             $grid->column('avatar', '出价人头像')->display(function () {
                 return $this->user['avatar'] ;
-            })->image(url(), 32, 32);
+            })->image(url(), 48, 48);
             $grid->column('price', '出价金额')->display(function () {
                 $price = $this->price * 0.01;
                 return  $this->goods['top_price'] * 0.01 == $price
