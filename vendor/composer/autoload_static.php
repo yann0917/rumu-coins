@@ -1060,6 +1060,7 @@ class ComposerStaticInit05720e6f4be80d186de19ece2590fe04
         'Dcat\\Admin\\Controllers\\PermissionController' => __DIR__ . '/..' . '/dcat/laravel-admin/src/Controllers/PermissionController.php',
         'Dcat\\Admin\\Controllers\\RoleController' => __DIR__ . '/..' . '/dcat/laravel-admin/src/Controllers/RoleController.php',
         'Dcat\\Admin\\Controllers\\ScaffoldController' => __DIR__ . '/..' . '/dcat/laravel-admin/src/Controllers/ScaffoldController.php',
+        'Dcat\\Admin\\Controllers\\TinymceController' => __DIR__ . '/..' . '/dcat/laravel-admin/src/Controllers/TinymceController.php',
         'Dcat\\Admin\\Controllers\\UserController' => __DIR__ . '/..' . '/dcat/laravel-admin/src/Controllers/UserController.php',
         'Dcat\\Admin\\Controllers\\ValueController' => __DIR__ . '/..' . '/dcat/laravel-admin/src/Controllers/ValueController.php',
         'Dcat\\Admin\\Exception\\Handler' => __DIR__ . '/..' . '/dcat/laravel-admin/src/Exception/Handler.php',

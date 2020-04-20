@@ -59,10 +59,11 @@ class UserController extends AdminController
             $grid->created_at;
             $grid->updated_at->sortable();
 
+            $grid->quickSearch(['id', 'name', 'username']);
+
             $grid->disableBatchDelete();
             $grid->showQuickEditButton();
             $grid->disableFilterButton();
-            $grid->quickSearch(['id', 'name', 'username']);
             $grid->enableDialogCreate();
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
