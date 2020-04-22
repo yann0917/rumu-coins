@@ -48,7 +48,7 @@ class HomeController extends Controller
     {
         $key = 'daily:sweet';
         $count = Redis::sCard($key);
-        if ($count > 365) {
+        if ($count > 110) {
             $sweet = Redis::sRandMember($key);
         } else {
             $sweet = $this->getCurl($this->sweet);
@@ -61,7 +61,7 @@ class HomeController extends Controller
     {
         $key = 'daily:flatter';
         $count = Redis::sCard($key);
-        if ($count > 365) {
+        if ($count > 110) {
             $flatter = Redis::sRandMember($key);
         } else {
             $flatter = $this->getCurl($this->flatter);
