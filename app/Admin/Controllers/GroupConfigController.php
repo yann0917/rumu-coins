@@ -23,11 +23,11 @@ class GroupConfigController extends AdminController
         return Grid::make(new GroupConfig(), function (Grid $grid) {
             $grid->model()->with('goods')->orderBy('id', 'desc');
             $grid->actions(function (Grid\Displayers\Actions $actions) {
-                if ( time() >= strtotime($this->start_at) && time() < strtotime($this->end_at)) {
+                if ( time() >= strtotime($this->advance_start_at) && time() < strtotime($this->end_at)) {
                     // 进行中
                     $actions->disableDelete();
                     $actions->disableEdit();
-                } elseif (time() >= strtotime($this->end_at) && time() >= strtotime($this->start_at)) {
+                } elseif (time() >= strtotime($this->end_at) && time() >= strtotime($this->advance_start_at)) {
                     // 已结束
                     $actions->disableDelete();
                     $actions->disableEdit();
@@ -86,7 +86,7 @@ class GroupConfigController extends AdminController
     protected function detail($id)
     {
         return Show::make($id, new GroupConfig(), function (Show $show) {
-            // $show->disableQuickEdit();
+            $show->disableQuickEdit();
             // $show->disableEditButton();
             $show->disableDeleteButton();
 
@@ -171,6 +171,7 @@ class GroupConfigController extends AdminController
     protected function form()
     {
         return Form::make(new GroupConfig(), function (Form $form) {
+            $form->disableDeleteButton();
             $form->display('id')->width(4);
             $form->number('issue')->required()->attribute('min', 1)->width(4);
             $form->datetime('advance_start_at')

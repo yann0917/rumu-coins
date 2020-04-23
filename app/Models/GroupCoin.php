@@ -13,4 +13,9 @@ class GroupCoin extends BaseModel
     {
         return $this->whereIn('id', $ids)->pluck('top_price', 'id');
     }
+
+    public function groups()
+    {
+        return $this->hasMany(Group::class, 'goods_id', 'id');
+    }
 }
