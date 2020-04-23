@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Group;
+use App\Models\GroupCoin;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
@@ -17,7 +17,10 @@ class GroupExport implements FromQuery,WithHeadings,WithMapping
 
     public function query()
     {
-        return Group::query()->with(['user', 'goods'])->where('group_id', $this->group_id);
+        return GroupCoin::query()
+            ->leftJoin('groups', 'group_coins.id', '=', 'groups.goods_id')
+            ->leftJoin('users', 'groups.user_id', '=', 'users.id')
+            ->where('group_coins.group_id', $this->group_id);
     }
 
     /**
@@ -39,21 +42,22 @@ class GroupExport implements FromQuery,WithHeadings,WithMapping
     }
 
     /**
-     * @var Group $group
+     * @var GroupCoin $groupCoin
      * @return array
      */
-    public function map($group): array
+    public function map($groupCoin): array
     {
+
         return [
-            $group->goods->sn,
-            $group->goods->category,
-            $group->goods->score,
-            $group->goods->sn_no,
-            $group->goods->low_price * 0.01,
-            $group->goods->top_price * 0.01,
-            $group->user->nickname,
-            $group->user->avatar,
-            $group->price * 0.01
+            $groupCoin->sn,
+            $groupCoin->category,
+            $groupCoin->score,
+            $groupCoin->sn_no,
+            $groupCoin->low_price * 0.01,
+            $groupCoin->top_price * 0.01,
+            $groupCoin->nickname,
+            $groupCoin->avatar,
+            $groupCoin->price * 0.01
         ];
     }
 }
