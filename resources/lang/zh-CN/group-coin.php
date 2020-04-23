@@ -6,6 +6,7 @@ return [
     ],
     'fields' => [
         'group_id' => '团购 ID',
+        'sequence' => '序号',
         'sn' => '号码',
         'category' => '分类',
         'score' => '分数',

@@ -12,6 +12,7 @@ namespace Dcat\Admin {
 
     /**
      * @property Grid\Column|Collection id
+     * @property Grid\Column|Collection sequence
      * @property Grid\Column|Collection username
      * @property Grid\Column|Collection name
      * @property Grid\Column|Collection roles
@@ -182,6 +183,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection url
      * @property Show\Field|Collection sort
      * @property Show\Field|Collection status
+     * @property Show\Field|Collection advance_status
      * @property Show\Field|Collection email
      * @property Show\Field|Collection email_verified_at
      * @property Show\Field|Collection password
@@ -193,8 +195,10 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection qrcode
      * @property Show\Field|Collection issue
      * @property Show\Field|Collection start_at
+     * @property Show\Field|Collection advance_start_at
      * @property Show\Field|Collection end_at
      * @property Show\Field|Collection group_id
+     * @property Show\Field|Collection sequence
      * @property Show\Field|Collection sn
      * @property Show\Field|Collection category
      * @property Show\Field|Collection score
@@ -307,19 +311,19 @@ namespace Dcat\Admin {
 
 namespace Dcat\Admin\Grid {
     /**
-     
+
      */
     class Column {}
 
     /**
-     
+
      */
     class Filter {}
 }
 
 namespace Dcat\Admin\Show {
     /**
-     
+
      */
     class Field {}
 }

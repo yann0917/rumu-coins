@@ -31,6 +31,7 @@ class UserController extends AdminController
             //     ]
             // );
             $grid->status->switch()->help('开关关闭表示已拉黑');
+            $grid->advance_status->switch();
             $grid->sex->using([ 0 => '女', 1 => '男']);
             $grid->country;
             $grid->province;
@@ -66,6 +67,7 @@ class UserController extends AdminController
             $show->unionid;
             $show->miniap_id;
             $show->status;
+            $show->advance_status;
             // $show->created_at;
             // $show->updated_at;
         });
@@ -97,6 +99,7 @@ class UserController extends AdminController
             // $form->image('avatar');
             $form->display('nickname');
             $form->switch('status', '正常用户');
+            $form->switch('advance_status', '提前竞价');
             // $form->display('created_at');
             // $form->display('updated_at');
         });

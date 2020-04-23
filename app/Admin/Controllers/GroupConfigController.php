@@ -10,7 +10,6 @@ use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Controllers\AdminController;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 
 class GroupConfigController extends AdminController
 {
@@ -40,6 +39,7 @@ class GroupConfigController extends AdminController
 
             $grid->id->sortable();
             $grid->issue->sortable();
+            $grid->advance_start_at;
             $grid->start_at;
             $grid->end_at;
 
@@ -49,9 +49,9 @@ class GroupConfigController extends AdminController
             });
 
             $grid->column('status')->display(function () {
-                if ( time() >= strtotime($this->start_at) && time() < strtotime($this->end_at)) {
+                if ( time() >= strtotime($this->advance_start_at) && time() < strtotime($this->end_at)) {
                     $status = 1;
-                } elseif (time() >= strtotime($this->end_at) && time() >= strtotime($this->start_at)) {
+                } elseif (time() >= strtotime($this->end_at) && time() >= strtotime($this->advance_start_at)) {
                     $status = 2;
                 } else {
                     $status = 0;
@@ -86,8 +86,8 @@ class GroupConfigController extends AdminController
     protected function detail($id)
     {
         return Show::make($id, new GroupConfig(), function (Show $show) {
-            $show->disableQuickEdit();
-            $show->disableEditButton();
+            // $show->disableQuickEdit();
+            // $show->disableEditButton();
             $show->disableDeleteButton();
 
             // $show->id->width(3);
@@ -96,9 +96,9 @@ class GroupConfigController extends AdminController
             })->width(3);
 
             $show->column('状态')->as(function() {
-                if ( time() >= strtotime($this->start_at) && time() < strtotime($this->end_at)) {
+                if ( time() >= strtotime($this->advance_start_at) && time() < strtotime($this->end_at)) {
                     $status = 1;
-                } elseif (time() >= strtotime($this->end_at) && time() >= strtotime($this->start_at)) {
+                } elseif (time() >= strtotime($this->end_at) && time() >= strtotime($this->advance_start_at)) {
                     $status = 2;
                 } else {
                     $status = 0;
@@ -109,6 +109,7 @@ class GroupConfigController extends AdminController
                 1 => '进行中',
                 2 => '已结束',
             ])->label()->width(3);
+            $show->advance_start_at->width(3);
             $show->start_at->width(3);
             $show->end_at->width(3);
             // $show->created_at;
@@ -118,9 +119,9 @@ class GroupConfigController extends AdminController
             // 一对多关联
             $show->coins(function ($model) {
                 return Grid::make(new GroupCoin(), function (Grid $grid) use($model) {
-                    if ( time() >= strtotime($model->start_at) && time() < strtotime($model->end_at)) {
+                    if ( time() >= strtotime($model->advance_start_at) && time() < strtotime($model->end_at)) {
                         $status = 1;
-                    } elseif (time() >= strtotime($model->end_at) && time() >= strtotime($model->start_at)) {
+                    } elseif (time() >= strtotime($model->end_at) && time() >= strtotime($model->advance_start_at)) {
                         $status = 2;
                     } else {
                         $status = 0;
@@ -140,6 +141,7 @@ class GroupConfigController extends AdminController
 
                     $grid->id->sortable();
                     // $grid->group_id;
+                    $grid->sequence('序号')->sortable();
                     $grid->sn('号码')->sortable();
                     $grid->category('分类')->sortable();
                     $grid->score('分数')->sortable();
@@ -169,12 +171,18 @@ class GroupConfigController extends AdminController
     protected function form()
     {
         return Form::make(new GroupConfig(), function (Form $form) {
-            $form->display('id');
+            $form->display('id')->width(4);
             $form->number('issue')->required()->attribute('min', 1)->width(4);
+            $form->datetime('advance_start_at')
+                ->format('YYYY-MM-DD HH:mm:ss')
+                ->rules('required|date|after:5minute ', [
+                    'after' => ':attribute必须大于 5 分钟之后',
+                ])
+                ->width(4);
             $form->datetime('start_at')
                 ->format('YYYY-MM-DD HH:mm:ss')
-                ->rules('required|date|after:10minute ', [
-                    'after' => ':attribute必须大于 10 分钟之后',
+                ->rules('required|date|after:advance_start_at ', [
+                    'after' => ':attribute必须大于提前开始时间',
                 ])->width(4);
             $form->datetime('end_at')
                 ->format('YYYY-MM-DD HH:mm:ss')
