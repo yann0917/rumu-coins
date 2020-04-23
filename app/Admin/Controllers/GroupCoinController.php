@@ -28,6 +28,7 @@ class GroupCoinController extends AdminController
 
             $grid->id->sortable();
             $grid->group_id;
+            $grid->sequence;
             $grid->sn->sortable();
             $grid->category;
             $grid->score->sortable();
@@ -58,6 +59,7 @@ class GroupCoinController extends AdminController
         return Show::make($id, new GroupCoin(), function (Show $show) {
             $show->id;
             $show->group_id;
+            $show->sequence;
             $show->sn;
             $show->category;
             $show->score;
@@ -79,6 +81,7 @@ class GroupCoinController extends AdminController
         return Form::make(new GroupCoin(), function (Form $form) {
             $form->display('id');
             $form->text('group_id');
+            $form->text('sequence');
             $form->text('sn');
             $form->text('category');
             $form->text('score');
@@ -115,13 +118,14 @@ class GroupCoinController extends AdminController
         unset($rows[0]);
         foreach ($rows as $row) {
             GroupCoin::create([
-                'sn' => $row[0],
-                'category' => $row[1],
-                'score' => $row[2],
-                'sn_no' => $row[3],
-                'low_price' => $row[4] * 100,
-                'top_price' => $row[5] * 100,
-                'group_id' => $row[6],
+                'sequence'=> $row[0],
+                'sn' => $row[1],
+                'category' => $row[2],
+                'score' => $row[3],
+                'sn_no' => $row[4],
+                'low_price' => $row[5] * 100,
+                'top_price' => $row[6] * 100,
+                'group_id' => $row[7],
             ]);
         }
         // Excel::import(new CoinsImport, request()->file('file'));
