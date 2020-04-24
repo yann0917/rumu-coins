@@ -29,6 +29,7 @@ class GroupExport implements FromQuery,WithHeadings,WithMapping
     public function headings(): array
     {
        return [
+           '序号',
            '号码',
            '分类',
            '分数',
@@ -49,6 +50,7 @@ class GroupExport implements FromQuery,WithHeadings,WithMapping
     {
 
         return [
+            $groupCoin->sequence,
             $groupCoin->sn,
             $groupCoin->category,
             $groupCoin->score,
