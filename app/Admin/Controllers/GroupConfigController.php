@@ -7,6 +7,7 @@ use App\Admin\Repositories\GroupConfig;
 use App\Models\GroupCoin;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
+use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
 use Dcat\Admin\Controllers\AdminController;
 use Illuminate\Support\Facades\Cache;
@@ -195,6 +196,24 @@ class GroupConfigController extends AdminController
             // $form->display('updated_at');
         });
     }
+
+    /**
+     * Edit interface.
+     *
+     * @param mixed   $id
+     * @param Content $content
+     *
+     * @return Content
+     */
+    public function edit($id, Content $content)
+    {
+        $this->delCache();
+        return $content
+            ->title($this->title())
+            ->description($this->description()['edit'] ?? trans('admin.edit'))
+            ->perfectScrollbar(false)
+            ->body($this->form()->edit($id));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -202,7 +221,7 @@ class GroupConfigController extends AdminController
      */
     public function store()
     {
-        Cache::forget('group:latest');
+        $this->delCache();
         return $this->form()->store();
     }
     /**
@@ -214,7 +233,13 @@ class GroupConfigController extends AdminController
      */
     public function update($id)
     {
-        Cache::forget('group:latest');
+        $this->delCache();
         return $this->form()->update($id);
+    }
+
+    protected function delCache()
+    {
+        Cache::forget('group:latest');
+        Cache::forget('group:latest:advance');
     }
 }

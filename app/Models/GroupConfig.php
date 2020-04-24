@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Cache;
 class GroupConfig extends BaseModel
 {
     protected $table = 'group_configs';
-
     /**
      * 一对多
      *
@@ -56,34 +55,50 @@ class GroupConfig extends BaseModel
     /**
      * 获取最近一个小时后开始或者正在进行中的的团购
      *
+     * @param bool $is_advance 是否提前参与
      * @return array
      */
-    public function getLatestGroup()
+    public function getLatestGroup(bool $is_advance = false)
     {
-        $cache = Cache::get('group:latest');
+        if ($is_advance) {
+            $key = 'group:latest:advance';
+            $start_at = 'advance_start_at';
+        } else {
+            $key = 'group:latest';
+            $start_at = 'start_at';
+        }
+        $cache = Cache::get($key);
+
         if ($cache) {
-            $cache['status'] = $this->getGroupStatus($cache['start_at'], $cache['end_at']);
+            $cache['status'] = $this->getGroupStatus($cache[$start_at], $cache['end_at']);
             return  $cache;
         }
         $now = date('Y-m-d H:i:s');
-        $detail = $this->where([['start_at', '<=', $now], ['end_at', '>', $now]])
-            ->orWhere([['start_at', '>=', $now], ['start_at', '<=', date('Y-m-d H:i:s', strtotime('+1 Hour'))]])
+        $detail = $this->where([[$start_at, '<=', $now], ['end_at', '>', $now]])
+            ->orWhere([[$start_at, '>=', $now], ['advance_start_at', '<=', date('Y-m-d H:i:s', strtotime('+1 Hour'))]])
             ->orderBy('issue', 'desc')->first();
         if (isset($detail['id'])) {
             $detail = $detail->toArray();
-            $detail['status'] = $this->getGroupStatus($detail['start_at'], $detail['end_at']);
+            // 开始时间替换掉
+            $detail['start_at'] = $detail[$start_at];
+            $detail['status'] = $this->getGroupStatus($detail['advance_start_at'], $detail['end_at']);
             $ttl = strtotime($detail['end_at']) - time();
-            Cache::put('group:latest', $detail, $ttl);
+            Cache::put($key, $detail, $ttl);
         }
         return $detail;
     }
 
     public function getLatestGroupGoods(int $limit, string $category, int $user_id = 0)
     {
-        $config = $this->getLatestGroup();
-        $list = $this->getGroupGoods($config['id'], $limit, $category);
+        // 判断用户是否可提前竞价
         if ($user_id > 0 ) {
+            $has_advance = (new User())->userHasAdvance($user_id);
+            $config = $has_advance ? $this->getLatestGroup(true) : $this->getLatestGroup();
+            $list = $this->getGroupGoods($config['id'], $limit, $category);
             $list['joined'] = $this->myJoined($user_id, $config['id']);
+        } else {
+            $config = $this->getLatestGroup();
+            $list = $this->getGroupGoods($config['id'], $limit, $category);
         }
         return $list;
     }

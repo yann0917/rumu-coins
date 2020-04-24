@@ -49,4 +49,22 @@ class User extends Authenticatable implements JWTSubject
         return $this->miniappId;
     }
 
+    public function userHasBlock(int $user_id)
+    {
+        $user = $this->where('id', $user_id)->first();
+        if ($user->status == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function userHasAdvance(int $user_id):bool 
+    {
+        $user = $this->where('id', $user_id)->first();
+        if ($user->status == 1 && $user->advance_status == 1) {
+            return true;
+        }
+        return false;
+    }
+
 }

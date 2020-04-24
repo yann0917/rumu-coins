@@ -127,7 +127,7 @@ class GroupController extends BaseController
             }
             throw new ApiException(Errors::ERR_PARAM, $errMsg);
         }
-        if ($this->userHasBlock()) {
+        if ($this->user->userHasBlock($this->user_id)) {
             throw new ApiException(Errors::ERR_USER_BLOCK);
         }
         $currentPrice = $this->group->getCurrentPrice($params['goods_id']);
@@ -163,7 +163,7 @@ class GroupController extends BaseController
             // $errs = $validator->errors()->getMessages();
             throw new ApiException(Errors::ERR_PARAM);
         }
-        if ($this->userHasBlock()) {
+        if ($this->user->userHasBlock($this->user_id)) {
             throw new ApiException(Errors::ERR_USER_BLOCK);
         }
         $ids = explode(',', $params['ids']);
@@ -194,16 +194,6 @@ class GroupController extends BaseController
         }
         return $this->success(1);
     }
-
-    protected function userHasBlock()
-    {
-        $user = $this->user->where('id', $this->user_id)->first();
-        if ($user->status == 0) {
-            return true;
-        }
-        return false;
-    }
-
 
     /**
      * 获取该商品当前团购价(分)
