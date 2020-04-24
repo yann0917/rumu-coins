@@ -38,6 +38,9 @@ class GroupController extends AdminController
             });
             $grid->model()->with(['user', 'goods'])->where('group_id', '=', $group_id);
             $grid->id->sortable();
+            $grid->column('sequence', '序号')->display(function () {
+                return $this->goods['sequence'];
+            });
             $grid->column('sn', '号码')->display(function () {
                 return $this->goods['sn'];
             });
