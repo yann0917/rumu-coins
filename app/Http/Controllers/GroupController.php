@@ -70,14 +70,19 @@ class GroupController extends BaseController
      */
     public function category(int $group_id = 0)
     {
+        $has_advance = false;
         if (!$group_id) {
-            $config = $this->groupConfig->getLatestGroup();
+            if ($this->user_id > 0) {
+                $has_advance = (new User())->userHasAdvance($this->user_id);
+                $config = $has_advance ? $this->groupConfig->getLatestGroup(true) : $this->groupConfig->getLatestGroup();
+            } else {
+                $config = $this->groupConfig->getLatestGroup();
+            }
             $group_id = $config['id'];
         }
-
         $category = (object)[];
         if ($group_id) {
-            $category = $this->groupConfig->getGroupCategory($group_id);
+            $category = $this->groupConfig->getGroupCategory($group_id, $has_advance);
         }
         return $this->success($category);
     }

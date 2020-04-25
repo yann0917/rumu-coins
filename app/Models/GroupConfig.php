@@ -131,14 +131,21 @@ class GroupConfig extends BaseModel
      * 获取分类
      *
      * @param int $group_id
+     * @param bool $is_advance
      * @return array
      */
-    public function getGroupCategory(int $group_id = 0)
+    public function getGroupCategory(int $group_id = 0, bool $is_advance = false)
     {
         $cache_key = 'group:category:'. $group_id;
         $cache = Cache::get($cache_key);
         if ($cache) {
-            $cache['status'] = $this->getGroupStatus($cache['start_at'], $cache['end_at']);
+            if ($is_advance) {
+                $start_at = 'advance_start_at';
+            } else {
+                $start_at = 'start_at';
+            }
+            $cache['start_at'] = $cache[$start_at];
+            $cache['status'] = $this->getGroupStatus($cache[$start_at], $cache['end_at']);
             return $cache;
         }
         $config = $this->show($group_id);
