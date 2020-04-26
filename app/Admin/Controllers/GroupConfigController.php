@@ -177,9 +177,6 @@ class GroupConfigController extends AdminController
             $form->number('issue')->required()->attribute('min', 1)->width(4);
             $form->datetime('advance_start_at')
                 ->format('YYYY-MM-DD HH:mm:ss')
-                ->rules('required|date|after:5minute ', [
-                    'after' => ':attribute必须大于 5 分钟之后',
-                ])
                 ->width(4);
             $form->datetime('start_at')
                 ->format('YYYY-MM-DD HH:mm:ss')
