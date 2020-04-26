@@ -236,7 +236,6 @@ class GroupConfigController extends AdminController
 
     protected function delCache()
     {
-        Cache::forget('group:latest');
-        Cache::forget('group:latest:advance');
+        Cache::tags(['group', 'category'])->flush();
     }
 }

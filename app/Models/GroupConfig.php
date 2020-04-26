@@ -83,7 +83,7 @@ class GroupConfig extends BaseModel
             $detail['start_at'] = $detail[$start_at];
             $detail['status'] = $this->getGroupStatus($detail['advance_start_at'], $detail['end_at']);
             $ttl = strtotime($detail['end_at']) - time();
-            Cache::put($key, $detail, $ttl);
+            Cache::tags('group')->put($key, $detail, $ttl);
         }
         return $detail;
     }
@@ -152,7 +152,7 @@ class GroupConfig extends BaseModel
         $config['category'] = (new GroupCoin())->select('category')
             ->where('group_id', $group_id)
             ->groupBy('category')->get()->toArray();
-        Cache::put($cache_key, $config, $this->ttl);
+        Cache::tags('category')->put($cache_key, $config, $this->ttl);
         return $config;
     }
 
